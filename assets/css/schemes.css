@@ -1,0 +1,424 @@
+/**
+ * View: Construction Schemes (Quotation Generator & Area-Based Calculator) Styles
+ * File: assets/css/schemes.css
+ * @version 1.0.0
+ */
+
+.vpdl-schemes-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    box-sizing: border-box;
+}
+
+.vpdl-panel {
+    background: var(--vpdl-card-bg);
+    border: 1px solid var(--vpdl-border-color);
+    border-radius: 12px;
+    box-shadow: var(--vpdl-shadow-sm);
+    box-sizing: border-box;
+}
+
+.vpdl-schemes-header {
+    padding: 20px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.vpdl-schemes-header-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.vpdl-schemes-header-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: rgba(2, 132, 199, 0.1);
+    color: var(--vpdl-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.vpdl-schemes-header-title {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--vpdl-text-main);
+}
+
+.vpdl-schemes-header-subtitle {
+    font-size: 12px;
+    color: var(--vpdl-text-muted);
+    margin-top: 2px;
+}
+
+.vpdl-schemes-pill-amber {
+    font-size: 11.5px;
+    font-weight: 700;
+    color: #f59e0b;
+    background: rgba(245, 158, 11, 0.1);
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid rgba(245, 158, 11, 0.25);
+    display: inline-block;
+}
+
+.vpdl-schemes-pill {
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    display: inline-block;
+}
+
+.vpdl-schemes-pill-green {
+    background: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+}
+
+.vpdl-schemes-pill-red {
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+}
+
+.vpdl-schemes-pill-amber-bg {
+    background: rgba(245, 158, 11, 0.1);
+    color: #f59e0b;
+}
+
+/* Tab Navigation */
+.vpdl-schemes-tab-nav {
+    display: flex;
+    gap: 8px;
+    border-bottom: 1.5px solid var(--vpdl-border-color);
+    padding-bottom: 6px;
+    flex-wrap: wrap;
+}
+
+.vpdl-schemes-tab-btn {
+    padding: 10px 20px;
+    border-radius: 8px 8px 0 0;
+    font-size: 13.5px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.15s ease;
+    background: transparent;
+    color: var(--vpdl-text-muted);
+}
+
+.vpdl-schemes-tab-btn.is-active {
+    background: var(--vpdl-accent);
+    color: #ffffff;
+}
+
+.vpdl-schemes-tab-pane {
+    display: none;
+}
+
+.vpdl-schemes-tab-pane.is-active {
+    display: block;
+}
+
+/* Layout Grids */
+.vpdl-schemes-builder-grid {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 24px;
+    align-items: start;
+}
+
+.vpdl-schemes-summary-col {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.vpdl-schemes-card-pad {
+    padding: 24px;
+}
+
+.vpdl-schemes-card-pad-sm {
+    padding: 20px;
+}
+
+.vpdl-schemes-grid-2 {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 14px;
+    margin-bottom: 16px;
+}
+
+.vpdl-schemes-options-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.vpdl-scheme-option-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px;
+    border-radius: 8px;
+    border: 1.5px solid var(--vpdl-border-color);
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.02);
+    transition: border-color 0.15s ease;
+}
+
+.vpdl-scheme-option-card:hover {
+    border-color: var(--vpdl-accent);
+}
+
+.vpdl-scheme-option-title {
+    color: var(--vpdl-text-main);
+    font-size: 13.5px;
+}
+
+.vpdl-scheme-option-rate {
+    font-size: 12px;
+    color: var(--vpdl-accent);
+    font-weight: 700;
+    margin-top: 2px;
+}
+
+.vpdl-scheme-option-desc {
+    font-size: 11.5px;
+    color: var(--vpdl-text-muted);
+    margin-top: 4px;
+    line-height: 1.4;
+}
+
+.vpdl-service-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--vpdl-border-color);
+    background: var(--vpdl-card-bg);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    user-select: none;
+}
+
+.vpdl-service-card.is-selected {
+    border-color: var(--vpdl-accent);
+    background: rgba(2, 132, 199, 0.06);
+}
+
+.vpdl-service-title {
+    font-size: 11.5px;
+    color: var(--vpdl-text-muted);
+    line-height: 1.3;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.vpdl-schemes-summary-line {
+    display: flex;
+    justify-content: space-between;
+}
+
+.vpdl-schemes-summary-subtotal {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px dashed var(--vpdl-border-color);
+    padding-top: 8px;
+}
+
+.vpdl-schemes-summary-grand {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1.5px solid var(--vpdl-border-color);
+    padding-top: 10px;
+    margin-top: 4px;
+    font-size: 17px;
+    color: #10b981;
+}
+
+.vpdl-schemes-btn-submit {
+    width: 100%;
+    height: 46px;
+    font-weight: 700;
+    border-radius: 8px;
+    background: var(--vpdl-accent);
+    border: none;
+    color: #ffffff;
+    font-size: 14.5px;
+    cursor: pointer;
+}
+
+.vpdl-schemes-action-btn {
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.vpdl-btn-view {
+    background: rgba(2, 132, 199, 0.1);
+    color: var(--vpdl-accent);
+    margin-right: 4px;
+}
+
+.vpdl-btn-edit {
+    background: var(--vpdl-card-bg);
+    border-color: var(--vpdl-border-color);
+    color: var(--vpdl-text-main);
+    margin-right: 4px;
+}
+
+.vpdl-btn-delete {
+    background: rgba(239, 68, 68, 0.1);
+    border-color: rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+}
+
+.vpdl-schemes-alert {
+    padding: 12px 18px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-weight: 700;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.vpdl-schemes-alert-success {
+    background: #ecfdf5;
+    border: 1px solid #a7f3d0;
+    color: #065f46;
+}
+
+.vpdl-schemes-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.vpdl-schemes-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.vpdl-schemes-table th {
+    padding: 12px 10px;
+    text-align: left;
+    color: var(--vpdl-text-muted);
+    border-bottom: 1.5px solid var(--vpdl-border-color);
+    font-size: 11.5px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.vpdl-schemes-table td {
+    padding: 12px 10px;
+    border-bottom: 1px solid var(--vpdl-border-color);
+}
+
+.vpdl-schemes-row:hover {
+    background: rgba(2, 132, 199, 0.02);
+}
+
+.vpdl-schemes-form-group {
+    margin-bottom: 16px;
+}
+
+.vpdl-schemes-form-group label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 6px;
+    font-size: 13px;
+    color: var(--vpdl-text-main);
+}
+
+.vpdl-schemes-input,
+.vpdl-schemes-select,
+.vpdl-schemes-textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--vpdl-border-color);
+    background: var(--vpdl-input-bg);
+    color: var(--vpdl-text-main);
+    box-sizing: border-box;
+}
+
+.vpdl-schemes-card-max {
+    padding: 28px;
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+.vpdl-schemes-card-tariff {
+    padding: 28px;
+    max-width: 860px;
+}
+
+.vpdl-schemes-tariff-box {
+    padding: 16px;
+    border: 1.5px solid var(--vpdl-border-color);
+    border-radius: 10px;
+    margin-bottom: 18px;
+    background: rgba(255, 255, 255, 0.01);
+}
+
+.vpdl-schemes-tariff-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+@media (max-width: 960px) {
+    .vpdl-schemes-builder-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .vpdl-schemes-grid-2 {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media print {
+    #adminmenumain, #wpadminbar, #wpfooter, .vpdl-no-print {
+        display: none !important;
+    }
+    #wpcontent, #wpbody-content {
+        margin-left: 0 !important;
+        padding: 0 !important;
+    }
+    body {
+        background: #ffffff !important;
+        color: #000000 !important;
+    }
+    .vpdl-panel {
+        box-shadow: none !important;
+        border: 1px solid #ccc !important;
+    }
+}

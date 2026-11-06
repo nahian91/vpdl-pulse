@@ -1,0 +1,6390 @@
+/**
+ * Ozone Skypool OS - Admin Workspace Styles
+ */
+
+/* 1. WordPress Admin Isolation & Viewport Lock */
+#wpadminbar,
+#adminmenumain,
+#adminmenuback,
+#adminmenuwrap,
+#wpfooter,
+.notice,
+.updated,
+.error,
+.update-nag {
+    display: none !important;
+}
+
+html.wp-toolbar {
+    padding-top: 0 !important;
+}
+
+html, body {
+    overflow: hidden !important;
+    height: 100vh !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+#wpcontent {
+    margin-left: 0 !important;
+    padding: 0 !important;
+    background: var(--ifs-bg) !important;
+}
+
+#wpbody-content {
+    padding-bottom: 0 !important;
+    float: none !important;
+}
+
+/* 2. Color Tokens & Theme Variables */
+:root {
+    --ifs-bg: #f8fafc;
+    --ifs-sidebar: #ffffff;
+    --ifs-surface: #ffffff;
+    --ifs-surface-hover: #f1f5f9;
+    --ifs-surface-active: #e2e8f0;
+    --ifs-border-subtle: #e2e8f0;
+    --ifs-border-strong: #cbd5e1;
+    --ifs-border-focus: #2d282a;
+    --ifs-text-primary: #0f172a;
+    --ifs-text-secondary: #475569;
+    --ifs-text-tertiary: #64748b;
+    --ifs-primary: #2d282a;
+    --ifs-primary-hover: #0369a1;
+    --ifs-accent: #2d282a;
+    --ifs-primary-soft: rgba(2, 132, 199, 0.1);
+    --ifs-success: #16a34a;
+    --ifs-success-soft: rgba(22, 163, 74, 0.12);
+    --ifs-danger: #e11d48;
+    --ifs-danger-soft: rgba(225, 29, 72, 0.12);
+    --ifs-warning: #d97706;
+    --ifs-warning-soft: rgba(217, 119, 6, 0.12);
+    --ifs-card-shadow: 0 4px 16px rgba(15, 23, 42, 0.05);
+    --ifs-font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --ifs-font-mono: 'JetBrains Mono', monospace;
+}
+
+[data-theme="dark"] {
+    --ifs-bg: #070a12;
+    --ifs-sidebar: #0d121f;
+    --ifs-surface: #121829;
+    --ifs-surface-hover: #182035;
+    --ifs-surface-active: #1e2842;
+    --ifs-border-subtle: rgba(255, 255, 255, 0.07);
+    --ifs-border-strong: rgba(255, 255, 255, 0.14);
+    --ifs-border-focus: #38bdf8;
+    --ifs-text-primary: #f8fafc;
+    --ifs-text-secondary: #94a3b8;
+    --ifs-text-tertiary: #64748b;
+    --ifs-primary: #2d282a;
+    --ifs-primary-hover: #0369a1;
+    --ifs-accent: #38bdf8;
+    --ifs-primary-soft: rgba(2, 132, 199, 0.18);
+    --ifs-success: #10b981;
+    --ifs-success-soft: rgba(16, 185, 129, 0.14);
+    --ifs-danger: #f43f5e;
+    --ifs-danger-soft: rgba(244, 63, 94, 0.14);
+    --ifs-warning: #f59e0b;
+    --ifs-warning-soft: rgba(245, 158, 11, 0.14);
+    --ifs-card-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+/* 3. Core Shell Layout */
+.ifs-pms-shell {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    background: var(--ifs-bg);
+    font-family: var(--ifs-font-sans);
+    color: var(--ifs-text-primary);
+    box-sizing: border-box;
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+.ifs-pms-aside {
+    width: 260px;
+    min-width: 260px;
+    background: var(--ifs-sidebar);
+    border-right: 1px solid var(--ifs-border-subtle);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 22px 14px;
+    box-sizing: border-box;
+    z-index: 20;
+}
+
+.ifs-pms-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 4px 8px 18px 8px;
+    border-bottom: 1px solid var(--ifs-border-subtle);
+    margin-bottom: 16px;
+}
+
+.ifs-pms-brand-icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--ifs-primary) 0%, var(--ifs-primary-hover) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 18px;
+    box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3);
+}
+
+.ifs-pms-nav-group-title {
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--ifs-text-tertiary);
+    padding: 10px 12px 6px;
+}
+
+.ifs-pms-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 12px 0;
+}
+
+.ifs-pms-nav-item {
+    margin-bottom: 2px;
+}
+
+.ifs-pms-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--ifs-text-secondary);
+    text-decoration: none;
+    padding: 9px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.15s ease-in-out;
+    position: relative;
+}
+
+.ifs-pms-nav-link i {
+    font-size: 15px;
+    width: 18px;
+    text-align: center;
+    color: var(--ifs-text-tertiary);
+}
+
+.ifs-pms-nav-link:hover {
+    color: var(--ifs-text-primary);
+    background: var(--ifs-surface-hover);
+}
+
+.ifs-pms-nav-link:hover i {
+    color: var(--ifs-text-primary);
+}
+
+.ifs-pms-nav-item.ifs-pms-active .ifs-pms-nav-link {
+    background: var(--ifs-primary-soft);
+    color: var(--ifs-accent);
+    font-weight: 700;
+}
+
+.ifs-pms-nav-item.ifs-pms-active .ifs-pms-nav-link i {
+    color: var(--ifs-accent);
+}
+
+.ifs-pms-nav-item.ifs-pms-active .ifs-pms-nav-link::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 6px;
+    bottom: 6px;
+    width: 3px;
+    background: var(--ifs-accent);
+    border-radius: 0 3px 3px 0;
+}
+
+.ifs-pms-theme-toggle-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--ifs-surface-hover);
+    border: 1px solid var(--ifs-border-subtle);
+    border-radius: 10px;
+    padding: 8px 12px;
+    margin-bottom: 12px;
+}
+
+.ifs-pms-theme-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--ifs-text-secondary);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.ifs-pms-theme-btn.active {
+    background: var(--ifs-surface);
+    color: var(--ifs-text-primary);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.ifs-pms-operator-card {
+    background: var(--ifs-surface-hover);
+    border: 1px solid var(--ifs-border-subtle);
+    border-radius: 10px;
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ifs-pms-operator-avatar {
+    width: 32px;
+    height: 32px;
+    background: var(--ifs-surface);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 13px;
+    color: var(--ifs-accent);
+    border: 1px solid var(--ifs-border-strong);
+}
+
+.ifs-pms-canvas {
+    flex-grow: 1;
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 28px 36px;
+    box-sizing: border-box;
+    background: var(--ifs-bg);
+}
+
+.ifs-pms-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--ifs-border-subtle);
+    margin-bottom: 22px;
+}
+
+.ifs-pms-header h1 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.4px;
+    color: var(--ifs-text-primary);
+}
+
+.ifs-pms-header p {
+    margin: 4px 0 0 0;
+    font-size: 12.5px;
+    color: var(--ifs-text-secondary);
+    display: flex;
+    align-items: center;
+}
+
+.ifs-pms-pulse-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--ifs-success);
+    box-shadow: 0 0 8px var(--ifs-success);
+    display: inline-block;
+    margin-right: 6px;
+}
+
+.ifs-pms-panel {
+    background: var(--ifs-surface);
+    border: 1px solid var(--ifs-border-subtle);
+    border-radius: 14px;
+    padding: 22px 24px;
+    margin-bottom: 20px;
+    box-shadow: var(--ifs-card-shadow);
+    box-sizing: border-box;
+}
+
+.ifs-pms-mono {
+    font-family: var(--ifs-font-mono) !important;
+}
+
+.ifs-pms-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 6px;
+}
+
+.ifs-pms-badge-success {
+    background: var(--ifs-success-soft);
+    color: var(--ifs-success);
+}
+
+.ifs-pms-badge-danger {
+    background: var(--ifs-danger-soft);
+    color: var(--ifs-danger);
+}
+
+/* 4. Thermal Slip Modal & Print Formatting */
+#ifs-pms-thermal-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(6px);
+    z-index: 999999;
+    align-items: center;
+    justify-content: center;
+}
+
+.ifs-pms-receipt-card {
+    background: #ffffff;
+    width: 300px;
+    padding: 24px;
+    border-radius: 8px;
+    color: #000000;
+    font-family: var(--ifs-font-mono);
+    text-align: center;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35);
+}
+
+.ifs-pms-dashed-sep {
+    border-top: 1px dashed #cbd5e1;
+    margin: 12px 0;
+}
+
+@media print {
+    body * {
+        visibility: hidden !important;
+    }
+    #ifs-pms-thermal-modal,
+    #ifs-pms-thermal-modal * {
+        visibility: visible !important;
+    }
+    #ifs-pms-thermal-modal {
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: #ffffff !important;
+        width: 100% !important;
+    }
+    .no-print {
+        display: none !important;
+    }
+}
+
+    .ifs-pms-settings-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .ifs-pms-subnav-bar {
+        display: flex;
+        width: 500px;
+        gap: 8px;
+        background: #f1f5f9;
+        padding: 6px;
+        border-radius: 14px;
+        border: 1px solid #e2e8f0;
+        box-sizing: border-box;
+    }
+
+    .ifs-pms-subnav-btn {
+        flex: 1 1 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 12px 20px;
+        border-radius: 10px;
+        font-size: 13.5px;
+        font-weight: 700;
+        cursor: pointer;
+        background: transparent;
+        color: #475569;
+        border: none !important;
+        outline: none;
+        transition: all 0.2s ease;
+        text-align: center;
+        white-space: nowrap;
+    }
+
+    .ifs-pms-subnav-btn:hover { 
+        color: #0f172a; 
+    }
+
+    .ifs-pms-subnav-btn.active {
+        background: #ffffff !important;
+        color: #2d282a !important;
+        box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+    }
+
+    .ifs-pms-tab-pane { 
+        display: none; 
+    }
+
+    .ifs-pms-tab-pane.active {
+        display: block;
+        animation: ifsPmsFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes ifsPmsFadeIn {
+        from { opacity: 0; transform: translateY(3px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .ifs-pms-panel-card {
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 18px;
+        box-shadow: 0 4px 18px rgba(15, 23, 42, 0.03);
+        box-sizing: border-box;
+        overflow: hidden;
+        margin-bottom: 24px;
+    }
+
+    .ifs-pms-panel-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 28px;
+        border-bottom: 1px solid #e2e8f0;
+        background: #fafbfd;
+    }
+
+    .ifs-pms-panel-title {
+        margin: 0;
+        font-size: 15.5px;
+        font-weight: 800;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #0f172a;
+    }
+
+    .ifs-pms-panel-icon {
+        color: #2d282a;
+    }
+
+    .ifs-pms-form-stack {
+        padding: 26px 28px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        box-sizing: border-box;
+    }
+
+    .ifs-pms-field-group {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin: 0;
+    }
+
+    .ifs-pms-field-label {
+        font-size: 12.5px;
+        font-weight: 700;
+        color: #334155;
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .ifs-pms-field-label-compact {
+        font-size: 13px;
+        margin: 0;
+    }
+
+    .ifs-pms-grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+    }
+
+    .ifs-pms-grid-2-compact {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+        margin-top: 4px;
+    }
+
+    @media (max-width: 760px) {
+        .ifs-pms-grid-2,
+        .ifs-pms-grid-2-compact { 
+            grid-template-columns: 1fr; 
+        }
+    }
+
+    #wpcontent .ifs-pms-settings-wrapper input[type="text"],
+    #wpcontent .ifs-pms-settings-wrapper input[type="url"],
+    #wpcontent .ifs-pms-settings-wrapper input[type="number"],
+    #wpcontent .ifs-pms-settings-wrapper input[type="time"],
+    #wpcontent .ifs-pms-settings-wrapper textarea,
+    #wpcontent .ifs-pms-settings-wrapper select {
+        display: block !important;
+        width: 100% !important;
+        background: #ffffff !important;
+        border: 1.5px solid #cbd5e1 !important;
+        border-radius: 10px !important;
+        padding: 11px 16px !important;
+        font-size: 13.5px !important;
+        font-family: inherit !important;
+        color: #0f172a !important;
+        box-sizing: border-box !important;
+    }
+
+    #wpcontent .ifs-pms-settings-wrapper input:focus,
+    #wpcontent .ifs-pms-settings-wrapper textarea:focus,
+    #wpcontent .ifs-pms-settings-wrapper select:focus {
+        border-color: #2d282a !important;
+        box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15) !important;
+        outline: none !important;
+    }
+
+    .ifs-pms-select-heavy {
+        font-weight: 700 !important;
+        height: 46px !important;
+    }
+
+    .ifs-pms-switch-card {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: #f8fafc;
+        border: 1.5px solid #e2e8f0;
+        padding: 16px 20px;
+        border-radius: 14px;
+        transition: border-color 0.15s ease;
+    }
+
+    .ifs-pms-switch-card-tight {
+        padding: 12px 16px;
+    }
+
+    .ifs-pms-switch-card:hover { 
+        border-color: #cbd5e1; 
+    }
+
+    .ifs-pms-switch-meta { 
+        display: flex; 
+        flex-direction: column; 
+        gap: 2px; 
+    }
+
+    .ifs-pms-switch-title { 
+        font-size: 13.5px; 
+        font-weight: 800; 
+        color: #0f172a; 
+    }
+
+    .ifs-pms-switch-title-sm {
+        font-size: 13px;
+        font-weight: 700;
+        color: #0f172a;
+    }
+
+    .ifs-pms-switch-desc { 
+        font-size: 11.5px; 
+        color: #64748b; 
+    }
+
+    .ifs-pms-switch {
+        position: relative; 
+        display: inline-block; 
+        width: 48px; 
+        height: 26px; 
+        flex-shrink: 0;
+    }
+
+    .ifs-pms-switch input { 
+        opacity: 0; 
+        width: 0; 
+        height: 0; 
+    }
+
+    .ifs-pms-slider {
+        position: absolute; 
+        cursor: pointer; 
+        inset: 0; 
+        background-color: #cbd5e1;
+        transition: 0.25s ease; 
+        border-radius: 26px;
+    }
+
+    .ifs-pms-slider:before {
+        position: absolute; 
+        content: ""; 
+        height: 20px; 
+        width: 20px; 
+        left: 3px; 
+        bottom: 3px;
+        background-color: white; 
+        transition: 0.25s ease; 
+        border-radius: 50%;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .ifs-pms-switch input:checked + .ifs-pms-slider { 
+        background-color: #2d282a; 
+    }
+
+    .ifs-pms-switch input:checked + .ifs-pms-slider:before { 
+        transform: translateX(22px); 
+    }
+
+    .ifs-pms-schedule-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .ifs-pms-switch-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .ifs-pms-schedule-row {
+        display: grid;
+        grid-template-columns: 140px 130px 1fr 1fr;
+        gap: 14px;
+        align-items: center;
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        padding: 10px 16px;
+        border-radius: 12px;
+    }
+
+    .ifs-pms-schedule-day-title {
+        font-size: 13.5px;
+        color: #0f172a;
+    }
+
+    .ifs-pms-schedule-time-block {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .ifs-pms-schedule-time-label {
+        font-size: 11px;
+        font-weight: 700;
+        color: #64748b;
+    }
+
+    #wpcontent .ifs-pms-settings-wrapper input[type="time"].ifs-pms-time-input {
+        height: 36px !important;
+    }
+
+    .ifs-pms-repeater-table { 
+        width: 100%; 
+        border-collapse: collapse; 
+        margin-top: 4px; 
+    }
+
+    .ifs-pms-repeater-table th {
+        background: #fafbfd; 
+        color: #64748b; 
+        font-weight: 700; 
+        font-size: 11.5px;
+        text-transform: uppercase; 
+        padding: 10px 14px; 
+        border: 1px solid #e2e8f0; 
+        text-align: left;
+    }
+
+    .ifs-pms-repeater-table td { 
+        padding: 10px 14px; 
+        border: 1px solid #e2e8f0; 
+        vertical-align: middle; 
+    }
+
+    .ifs-pms-th-tier-name { width: 45%; }
+    .ifs-pms-th-tier-age { width: 30%; }
+    .ifs-pms-th-tier-price { width: 17%; }
+    .ifs-pms-th-tier-action { width: 8%; text-align: center; }
+
+    .ifs-pms-th-addon-name { width: 55%; }
+    .ifs-pms-th-addon-price { width: 35%; }
+    .ifs-pms-th-addon-action { width: 10%; text-align: center; }
+
+    .ifs-pms-td-action {
+        text-align: center;
+    }
+
+    .ifs-pms-amenities-box-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 10px 0 8px 0;
+    }
+
+    .ifs-pms-amenities-repeater-wrapper {
+        display: none;
+    }
+
+    .ifs-pms-amenities-repeater-wrapper.is-visible {
+        display: block;
+    }
+
+    .ifs-pms-check-grid { 
+        display: grid; 
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+        gap: 12px; 
+        margin-top: 4px; 
+    }
+
+    .ifs-pms-separator {
+        border: 0;
+        border-top: 1px solid #e2e8f0;
+        margin: 6px 0;
+    }
+
+    .ifs-pms-logo-upload-group {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .ifs-pms-logo-preview-box {
+        margin-top: 10px;
+    }
+
+    .ifs-pms-logo-img {
+        max-height: 48px;
+        width: auto;
+        border-radius: 8px;
+        border: 1px solid #e2e8f0;
+        padding: 4px;
+        background: #fff;
+    }
+
+    #wpcontent .ifs-pms-settings-wrapper .ifs-pms-btn {
+        display: inline-flex !important; 
+        align-items: center !important; 
+        justify-content: center !important;
+        gap: 8px !important; 
+        font-weight: 700 !important; 
+        cursor: pointer !important; 
+        box-sizing: border-box !important; 
+        text-decoration: none !important;
+    }
+
+    #wpcontent .ifs-pms-settings-wrapper .ifs-pms-btn-primary.ifs-pms-btn-lg {
+        height: 50px !important; 
+        padding: 0 24px !important; 
+        font-size: 14.5px !important; 
+        font-weight: 800 !important;
+        border-radius: 12px !important; 
+        background: linear-gradient(135deg, #2d282a 0%, #0369a1 100%) !important; 
+        color: #ffffff !important;
+        border: 1px solid rgba(2, 132, 199, 0.8) !important; 
+        box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35) !important;
+    }
+
+    #wpcontent .ifs-pms-settings-wrapper .ifs-pms-btn-submit-block {
+        width: 100% !important;
+        margin-top: 10px !important;
+    }
+
+    #wpcontent .ifs-pms-settings-wrapper .ifs-pms-btn-secondary {
+        height: 38px !important; 
+        padding: 0 16px !important; 
+        font-size: 12.5px !important; 
+        border-radius: 10px !important;
+        background: #ffffff !important; 
+        color: #475569 !important; 
+        border: 1.5px solid #cbd5e1 !important;
+    }
+
+    #wpcontent .ifs-pms-settings-wrapper .ifs-pms-btn-danger.ifs-pms-btn-sm {
+        height: 34px !important; 
+        padding: 0 10px !important; 
+        font-size: 12px !important; 
+        border-radius: 8px !important;
+        background: linear-gradient(135deg, #f43f5e 0%, #e11d48 100%) !important; 
+        color: #ffffff !important; 
+        border: 1px solid rgba(225, 29, 72, 0.5) !important;
+    }
+
+    .ifs-pms-empty-table-notice {
+        text-align: center;
+        padding: 24px !important;
+        color: #94a3b8;
+        font-size: 13px;
+    }
+
+    .ifs-pms-report-wrap {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Top Filter Bar */
+    .ifs-pms-top-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 20px;
+        padding: 22px 28px;
+        box-shadow: 0 10px 30px rgba(15, 23, 42, 0.03);
+        box-sizing: border-box;
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+
+    .ifs-pms-tag-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 11px;
+        font-weight: 800;
+        text-transform: uppercase;
+        color: #10b981;
+        background: rgba(16, 185, 129, 0.08);
+        padding: 4px 12px;
+        border-radius: 20px;
+        border: 1px solid rgba(16, 185, 129, 0.25);
+    }
+
+    .ifs-pms-bar-title {
+        margin: 6px 0 0 0;
+        font-size: 20px;
+        font-weight: 800;
+        color: #0f172a;
+    }
+
+    .ifs-pms-bar-controls {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .ifs-pms-date-picker-pill {
+        display: flex;
+        align-items: center;
+        background: #f8fafc;
+        border: 1.5px solid #cbd5e1;
+        border-radius: 12px;
+        padding: 4px 12px;
+        gap: 8px;
+    }
+
+    .ifs-pms-date-label {
+        font-size: 11px;
+        font-weight: 700;
+        color: #64748b;
+    }
+
+    #wpcontent .ifs-pms-report-wrap input[type="date"] {
+        background: #ffffff !important;
+        border: 1px solid #cbd5e1 !important;
+        border-radius: 8px !important;
+        font-size: 12.5px !important;
+        font-weight: 700 !important;
+        color: #0f172a !important;
+        padding: 6px 10px !important;
+        height: 36px !important;
+        cursor: pointer;
+    }
+
+    #wpcontent .ifs-pms-report-wrap select {
+        background: transparent !important;
+        border: none !important;
+        font-size: 13px !important;
+        font-weight: 700 !important;
+        color: #0f172a !important;
+        padding: 6px 28px 6px 12px !important;
+        height: 36px !important;
+        cursor: pointer;
+        box-shadow: none !important;
+    }
+
+    /* Summary Card Grid */
+    .ifs-pms-card-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 18px;
+    }
+
+    .ifs-pms-stat-card {
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 18px;
+        padding: 22px;
+        box-shadow: 0 4px 20px rgba(15, 23, 42, 0.03);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .ifs-pms-stat-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+    }
+
+    .ifs-pms-stat-name {
+        font-size: 11px;
+        font-weight: 800;
+        text-transform: uppercase;
+        color: #64748b;
+    }
+
+    .ifs-pms-stat-icon {
+        width: 38px;
+        height: 38px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+    }
+
+    .ifs-pms-stat-icon-green { background: rgba(16, 185, 129, 0.1); color: #10b981; }
+    .ifs-pms-stat-icon-red { background: rgba(239, 68, 68, 0.1); color: #ef4444; }
+    .ifs-pms-stat-icon-blue { background: rgba(2, 132, 199, 0.1); color: #2d282a; }
+    .ifs-pms-stat-icon-purple { background: rgba(168, 85, 247, 0.1); color: #a855f7; }
+
+    .ifs-pms-stat-number {
+        font-size: 26px;
+        font-weight: 800;
+        line-height: 1.1;
+    }
+
+    .ifs-pms-stat-number-green { color: #10b981; }
+    .ifs-pms-stat-number-red { color: #ef4444; }
+    .ifs-pms-stat-number-purple { color: #a855f7; }
+
+    .ifs-pms-stat-bottom {
+        font-size: 12px;
+        color: #64748b;
+        margin-top: 8px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .ifs-pms-sub-tabs {
+        display: flex;
+        gap: 10px;
+        background: #f1f5f9;
+        padding: 6px;
+        border-radius: 16px;
+        border: 1px solid #e2e8f0;
+        box-sizing: border-box;
+    }
+
+    .ifs-pms-sub-tab-btn {
+        flex: 1;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 12px 20px;
+        border-radius: 12px;
+        font-size: 14px;
+        font-weight: 700;
+        cursor: pointer;
+        background: transparent;
+        color: #475569;
+        border: none !important;
+        outline: none;
+        transition: all 0.2s ease;
+    }
+
+    .ifs-pms-sub-tab-btn:hover { color: #0f172a; }
+    .ifs-pms-sub-tab-btn.active {
+        background: #ffffff !important;
+        color: #2d282a !important;
+        box-shadow: 0 4px 12px rgba(2, 132, 199, 0.15);
+    }
+
+    .ifs-pms-tab-content { display: none; }
+    .ifs-pms-tab-content.active { display: block; }
+
+    .ifs-pms-table-box {
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(15, 23, 42, 0.03);
+        overflow: hidden;
+    }
+
+    .ifs-pms-table-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 28px;
+        border-bottom: 1px solid #f1f5f9;
+        background: #fafbfd;
+        flex-wrap: wrap;
+        gap: 14px;
+    }
+
+    .ifs-pms-table-title {
+        margin: 0;
+        font-size: 16px;
+        font-weight: 800;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #0f172a;
+    }
+
+    .ifs-pms-table-filter-group {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+    }
+
+    .ifs-pms-table-filter-label {
+        font-size: 12px;
+        font-weight: 700;
+        color: #64748b;
+    }
+
+    .ifs-pms-data-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 13.5px;
+        text-align: left;
+    }
+
+    .ifs-pms-data-table th {
+        background: #f8fafc;
+        color: #64748b;
+        font-weight: 700;
+        font-size: 11.5px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        padding: 14px 20px;
+        border-bottom: 1px solid #e2e8f0;
+    }
+
+    .ifs-pms-data-table td {
+        padding: 16px 20px;
+        border-bottom: 1px solid #f1f5f9;
+        color: #0f172a;
+        vertical-align: middle;
+    }
+
+    .ifs-pms-data-table tr:hover td {
+        background: #f8fafc;
+    }
+
+    .ifs-pms-table-footer {
+        padding: 18px 28px;
+        background: #f8fafc;
+        border-top: 1px solid #e2e8f0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .ifs-pms-footer-label {
+        font-weight: 700;
+        color: #0f172a;
+    }
+
+    .ifs-pms-footer-value-green {
+        color: #10b981;
+        font-size: 18px;
+    }
+
+    .ifs-pms-footer-value-red {
+        color: #ef4444;
+        font-size: 18px;
+    }
+
+    .ifs-pms-empty-state {
+        text-align: center;
+        padding: 48px;
+        color: #94a3b8;
+    }
+
+    .ifs-pms-empty-icon {
+        font-size: 32px;
+        margin-bottom: 10px;
+        opacity: 0.3;
+        display: block;
+    }
+
+    .ifs-pms-code-cell {
+        font-weight: 800;
+    }
+
+    .ifs-pms-code-ticket { color: #2d282a; }
+    .ifs-pms-code-member { color: #a855f7; }
+
+    .ifs-pms-patron-cell {
+        font-weight: 700;
+    }
+
+    .ifs-pms-patron-sub {
+        font-size: 11px;
+        color: #64748b;
+    }
+
+    .ifs-pms-badge-ticket { background: rgba(2, 132, 199, 0.08); color: #2d282a; }
+    .ifs-pms-badge-member { background: rgba(168, 85, 247, 0.08); color: #a855f7; }
+    .ifs-pms-badge-expense { background: rgba(239, 68, 68, 0.08); color: #ef4444; }
+
+    .ifs-pms-room-tag {
+        font-size: 11px;
+        color: #2d282a;
+        font-weight: 700;
+        margin-top: 2px;
+    }
+
+    .ifs-pms-text-muted { color: #64748b; }
+    .ifs-pms-text-date { font-size: 12px; color: #475569; }
+
+    .ifs-pms-amount-green {
+        text-align: right;
+        font-weight: 800;
+        color: #10b981;
+    }
+
+    .ifs-pms-amount-red {
+        text-align: right;
+        font-weight: 800;
+        color: #ef4444;
+    }
+
+    /* Buttons */
+    #wpcontent .ifs-pms-report-wrap .ifs-pms-btn {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 8px !important;
+        font-weight: 700 !important;
+        cursor: pointer !important;
+        box-sizing: border-box !important;
+        text-decoration: none !important;
+    }
+
+    #wpcontent .ifs-pms-report-wrap .ifs-pms-btn-blue {
+        height: 40px !important;
+        padding: 0 18px !important;
+        border-radius: 10px !important;
+        background: #2d282a !important;
+        color: #ffffff !important;
+        border: 1px solid #2d282a !important;
+    }
+
+    #wpcontent .ifs-pms-report-wrap .ifs-pms-btn-white {
+        height: 40px !important;
+        padding: 0 16px !important;
+        border-radius: 10px !important;
+        background: #ffffff !important;
+        color: #475569 !important;
+        border: 1.5px solid #cbd5e1 !important;
+    }
+
+    /* Print View */
+    @media print {
+        .ifs-pms-top-bar form,
+        .ifs-pms-bar-controls button,
+        .ifs-pms-sub-tabs,
+        .ifs-pms-aside,
+        #adminmenumain,
+        #wpfooter {
+            display: none !important;
+        }
+        .ifs-pms-canvas {
+            padding: 0 !important;
+            background: #ffffff !important;
+        }
+        .ifs-pms-table-box, 
+        .ifs-pms-top-bar, 
+        .ifs-pms-stat-card {
+            box-shadow: none !important;
+            border: 1px solid #cbd5e1 !important;
+        }
+    }
+
+    /* ==========================================================================
+       EXECUTIVE EXPENSES & OUTFLOW REGISTRY SUITE (Zero Inline CSS)
+       ========================================================================== */
+    .ifs-pms-expense-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Sub Navigation Tabs */
+    .ifs-pms-subnav-bar {
+        display: flex;
+        width: 500px;
+        gap: 10px;
+        background: linear-gradient(135deg, rgba(241, 245, 249, 0.8) 0%, rgba(226, 232, 240, 0.6) 100%);
+        backdrop-filter: blur(12px);
+        padding: 8px;
+        border-radius: 16px;
+        border: 1px solid rgba(226, 232, 240, 0.8);
+        box-sizing: border-box;
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+    }
+
+    .ifs-pms-subnav-btn {
+        flex: 1 1 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 14px 24px;
+        border-radius: 12px;
+        font-size: 14px;
+        font-weight: 700;
+        cursor: pointer;
+        background: transparent;
+        color: #475569;
+        border: none !important;
+        outline: none;
+        transition: all 0.25s ease;
+        text-align: center;
+        white-space: nowrap;
+    }
+
+    .ifs-pms-subnav-btn:hover {
+        color: #0f172a;
+        background: rgba(255, 255, 255, 0.5);
+    }
+
+    .ifs-pms-subnav-btn.active {
+        background: #ffffff !important;
+        color: #2d282a !important;
+        box-shadow: 0 8px 24px rgba(2, 132, 199, 0.15), 0 2px 6px rgba(0, 0, 0, 0.04);
+        transform: translateY(-1px);
+    }
+
+    .ifs-pms-tab-pane {
+        display: none;
+    }
+
+    .ifs-pms-tab-pane.active {
+        display: block;
+        animation: ifsPmsFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes ifsPmsFadeIn {
+        from { opacity: 0; transform: translateY(8px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* KPI Summary Cards */
+    .ifs-pms-kpi-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 20px;
+    }
+
+    .ifs-pms-kpi-card {
+        background: #ffffff;
+        border: 1px solid rgba(226, 232, 240, 0.9);
+        border-radius: 24px;
+        padding: 24px;
+        box-shadow: 0 15px 30px -10px rgba(15, 23, 42, 0.05);
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .ifs-pms-kpi-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 20px 35px -10px rgba(15, 23, 42, 0.08);
+    }
+
+    .ifs-pms-kpi-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+    }
+
+    .ifs-pms-kpi-label {
+        font-size: 11.5px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #64748b;
+    }
+
+    .ifs-pms-kpi-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+    }
+
+    .ifs-pms-kpi-icon-red { background: rgba(239, 68, 68, 0.1); color: #ef4444; }
+    .ifs-pms-kpi-icon-amber { background: rgba(245, 158, 11, 0.1); color: #f59e0b; }
+    .ifs-pms-kpi-icon-purple { background: rgba(192, 132, 252, 0.1); color: #c084fc; }
+
+    .ifs-pms-kpi-val {
+        font-size: 28px;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        line-height: 1.1;
+    }
+
+    .ifs-pms-kpi-val-red { color: #ef4444; }
+    .ifs-pms-kpi-val-amber { color: #f59e0b; }
+    .ifs-pms-kpi-val-dark { font-size: 20px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: #0f172a; }
+
+    .ifs-pms-kpi-sub {
+        font-size: 12.5px;
+        color: #475569;
+        margin-top: 10px;
+    }
+
+    /* Card Panels */
+    .ifs-pms-panel-card {
+        background: #ffffff;
+        border: 1px solid rgba(226, 232, 240, 0.9);
+        border-radius: 24px;
+        box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.07);
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
+    .ifs-pms-panel-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 24px 32px;
+        border-bottom: 1px solid #f1f5f9;
+        background: linear-gradient(to bottom, #fafbfd, #f8fafc);
+    }
+
+    .ifs-pms-panel-title {
+        margin: 0;
+        font-size: 17px;
+        font-weight: 800;
+        letter-spacing: -0.01em;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: #0f172a;
+    }
+
+    /* Form Layout */
+    .ifs-pms-form-box-centered {
+        max-width: 720px;
+        margin: 0 auto;
+    }
+
+    .ifs-pms-form-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 22px;
+        padding: 36px;
+        box-sizing: border-box;
+    }
+
+    .ifs-pms-label {
+        font-size: 13px;
+        font-weight: 700;
+        color: #475569;
+        margin-bottom: 8px;
+        display: block;
+    }
+
+    #wpcontent .ifs-pms-expense-wrapper input[type="text"],
+    #wpcontent .ifs-pms-expense-wrapper input[type="number"],
+    #wpcontent .ifs-pms-expense-wrapper input[type="date"],
+    #wpcontent .ifs-pms-expense-wrapper select,
+    #wpcontent .ifs-pms-modal-card input[type="text"],
+    #wpcontent .ifs-pms-modal-card input[type="number"],
+    #wpcontent .ifs-pms-modal-card input[type="date"],
+    #wpcontent .ifs-pms-modal-card select {
+        display: block !important;
+        width: 100% !important;
+        background: #ffffff !important;
+        border: 1.5px solid #cbd5e1 !important;
+        border-radius: 14px !important;
+        padding: 12px 18px !important;
+        font-size: 14.5px !important;
+        font-family: inherit !important;
+        color: #0f172a !important;
+        height: 50px !important;
+        box-sizing: border-box !important;
+        transition: all 0.25s ease !important;
+    }
+
+    #wpcontent .ifs-pms-expense-wrapper input:focus,
+    #wpcontent .ifs-pms-expense-wrapper select:focus,
+    #wpcontent .ifs-pms-modal-card input:focus,
+    #wpcontent .ifs-pms-modal-card select:focus {
+        border-color: #2d282a !important;
+        box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.12) !important;
+        outline: none !important;
+    }
+
+    /* Preset Chips */
+    .ifs-pms-chips-wrap {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 10px;
+    }
+
+    .ifs-pms-chip {
+        background: #f1f5f9;
+        border: 1px solid #e2e8f0;
+        color: #475569;
+        border-radius: 8px;
+        padding: 6px 12px;
+        font-size: 12px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.15s ease;
+        user-select: none;
+    }
+
+    .ifs-pms-chip:hover {
+        background: rgba(2, 132, 199, 0.1);
+        border-color: #2d282a;
+        color: #2d282a;
+        transform: translateY(-1px);
+    }
+
+    /* Advanced Audit Toolbar */
+    .ifs-pms-audit-toolbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 22px 32px;
+        border-bottom: 1px solid #f1f5f9;
+        background: #ffffff;
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+
+    .ifs-pms-audit-filters {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        flex-wrap: wrap;
+        flex: 1;
+    }
+
+    .ifs-pms-date-pill {
+        display: flex;
+        align-items: center;
+        background: #f8fafc;
+        border: 1.5px solid #cbd5e1;
+        border-radius: 12px;
+        padding: 4px 12px;
+        gap: 8px;
+    }
+
+    #wpcontent .ifs-pms-audit-toolbar input[type="date"] {
+        background: transparent !important;
+        border: none !important;
+        font-size: 13px !important;
+        font-weight: 700 !important;
+        color: #0f172a !important;
+        height: 38px !important;
+        cursor: pointer;
+        box-shadow: none !important;
+    }
+
+    #wpcontent .ifs-pms-audit-toolbar select {
+        width: auto !important;
+        min-width: 190px !important;
+        height: 46px !important;
+        border-radius: 12px !important;
+    }
+
+    /* Table Architecture */
+    .ifs-pms-table-wrap {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    .ifs-pms-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
+        text-align: left;
+    }
+
+    .ifs-pms-table th {
+        background: #f8fafc;
+        color: #64748b;
+        font-weight: 700;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        padding: 18px 24px;
+        border-bottom: 1px solid #e2e8f0;
+    }
+
+    .ifs-pms-table td {
+        padding: 20px 24px;
+        border-bottom: 1px solid #f1f5f9;
+        color: #0f172a;
+        vertical-align: middle;
+    }
+
+    .ifs-pms-table tr:hover td {
+        background: #f8fafc;
+    }
+
+    .ifs-pms-cat-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: #f1f5f9;
+        color: #475569;
+        border: 1px solid #e2e8f0;
+        padding: 5px 12px;
+        border-radius: 8px;
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+    /* Modal Styling */
+    .ifs-pms-modal-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.7);
+        backdrop-filter: blur(8px);
+        z-index: 99999;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .ifs-pms-modal-card {
+        background: #ffffff;
+        border: 1.5px solid #cbd5e1;
+        border-radius: 24px;
+        width: 540px;
+        max-width: 95vw;
+        padding: 36px;
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+        box-sizing: border-box;
+    }
+
+    .ifs-pms-modal-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 24px;
+    }
+
+    .ifs-pms-modal-title {
+        margin: 0;
+        font-size: 17px;
+        font-weight: 800;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .ifs-pms-modal-close {
+        background: #f1f5f9;
+        border: none;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        font-size: 18px;
+        cursor: pointer;
+        color: #475569;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .ifs-pms-modal-details-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        font-size: 14px;
+    }
+
+    .ifs-pms-modal-row {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid #f1f5f9;
+        padding-bottom: 12px;
+    }
+
+    .ifs-pms-modal-row-last {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .ifs-pms-modal-label {
+        color: #64748b;
+        font-weight: 600;
+    }
+
+    .ifs-pms-modal-val-strong {
+        color: #0f172a;
+    }
+
+    .ifs-pms-modal-val-red {
+        color: #ef4444;
+        font-size: 17px;
+    }
+
+    .ifs-pms-modal-val-muted {
+        color: #475569;
+    }
+
+    /* Buttons */
+    #wpcontent .ifs-pms-expense-wrapper .ifs-pms-btn {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 8px !important;
+        font-weight: 700 !important;
+        cursor: pointer !important;
+        text-decoration: none !important;
+        transition: all 0.2s ease !important;
+    }
+
+    #wpcontent .ifs-pms-expense-wrapper .ifs-pms-btn-primary.ifs-pms-btn-lg {
+        height: 52px !important;
+        padding: 0 32px !important;
+        font-size: 15px !important;
+        font-weight: 800 !important;
+        border-radius: 14px !important;
+        background: linear-gradient(135deg, #2d282a 0%, #0369a1 100%) !important;
+        color: #ffffff !important;
+        border: 1px solid rgba(2, 132, 199, 0.8) !important;
+        box-shadow: 0 6px 20px rgba(2, 132, 199, 0.35) !important;
+    }
+
+    #wpcontent .ifs-pms-expense-wrapper .ifs-pms-btn-primary.ifs-pms-btn-lg:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(2, 132, 199, 0.45) !important;
+    }
+
+    .ifs-pms-table .ifs-pms-btn-sm {
+        height: 36px !important;
+        padding: 0 14px !important;
+        font-size: 12.5px !important;
+        border-radius: 10px !important;
+        font-weight: 700 !important;
+    }
+
+    .ifs-pms-table .ifs-pms-btn-view { background: rgba(16, 185, 129, 0.08) !important; color: #059669 !important; border: 1.5px solid rgba(16, 185, 129, 0.25) !important; }
+    .ifs-pms-table .ifs-pms-btn-view:hover { background: #10b981 !important; color: #ffffff !important; }
+
+    .ifs-pms-table .ifs-pms-btn-edit { background: rgba(2, 132, 199, 0.08) !important; color: #2d282a !important; border: 1.5px solid rgba(2, 132, 199, 0.25) !important; }
+    .ifs-pms-table .ifs-pms-btn-edit:hover { background: #2d282a !important; color: #ffffff !important; }
+
+    .ifs-pms-table .ifs-pms-btn-delete { background: rgba(244, 63, 94, 0.08) !important; color: #f43f5e !important; border: 1.5px solid rgba(244, 63, 94, 0.25) !important; }
+    .ifs-pms-table .ifs-pms-btn-delete:hover { background: #f43f5e !important; color: #ffffff !important; }
+
+    .ifs-pms-grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+    }
+
+    .ifs-pms-flex-gap-8 {
+        display: flex;
+        gap: 8px;
+    }
+
+    .ifs-pms-flex-gap-14 {
+        display: flex;
+        gap: 14px;
+        margin-top: 14px;
+    }
+
+    .ifs-pms-table-footer {
+        padding: 18px 32px;
+        background: #f8fafc;
+        border-top: 1px solid #e2e8f0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /**
+ * Ozone Skypool OS - Dashboard Stylesheet
+ *
+ * @package Ozone_Skypool_OS
+ */
+
+.ifs-pms-dash-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Hero Header Clock & Gate Telemetry Bar */
+.ifs-pms-telemetry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffffff;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    border-radius: 24px;
+    padding: 24px 32px;
+    box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.07);
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.ifs-pms-clock-wrap {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.ifs-pms-clock-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(2, 132, 199, 0.12) 0%, rgba(2, 132, 199, 0.04) 100%);
+    border: 1px solid rgba(2, 132, 199, 0.2);
+    color: #2d282a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+}
+
+.ifs-pms-clock-digits {
+    font-family: inherit;
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: #0f172a;
+    font-variant-numeric: tabular-nums;
+}
+
+.ifs-pms-clock-date {
+    font-size: 13px;
+    color: #64748b;
+    margin-top: 4px;
+}
+
+.ifs-pms-closing-countdown {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11.5px;
+    font-weight: 700;
+    color: #2d282a;
+    background: rgba(2, 132, 199, 0.08);
+    border: 1px solid rgba(2, 132, 199, 0.2);
+    padding: 3px 10px;
+    border-radius: 12px;
+    margin-top: 6px;
+}
+
+.ifs-pms-operator-meta {
+    text-align: right;
+}
+
+.ifs-pms-operator-name {
+    font-size: 14px;
+    font-weight: 800;
+    color: #0f172a;
+}
+
+.ifs-pms-operator-role {
+    font-size: 12px;
+    color: #64748b;
+}
+
+.ifs-pms-status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border-radius: 24px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+.ifs-pms-status-green { background: rgba(16, 185, 129, 0.1); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.25); }
+.ifs-pms-status-amber { background: rgba(245, 158, 11, 0.12); color: #f59e0b; border: 1px solid rgba(245, 158, 11, 0.25); }
+.ifs-pms-status-red { background: rgba(239, 68, 68, 0.12); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.25); }
+
+/* Live Occupancy Gauge Card */
+.ifs-pms-gauge-card {
+    background: #ffffff;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    border-radius: 24px;
+    padding: 24px 32px;
+    box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.07);
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 32px;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+@media (max-width: 900px) {
+    .ifs-pms-gauge-card {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+.ifs-pms-gauge-icon-box {
+    width: 58px;
+    height: 58px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(2, 132, 199, 0.14) 0%, rgba(56, 189, 248, 0.05) 100%);
+    border: 1px solid rgba(2, 132, 199, 0.25);
+    color: #2d282a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+}
+
+.ifs-pms-gauge-title {
+    font-size: 11.5px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #64748b;
+}
+
+.ifs-pms-gauge-numbers {
+    font-size: 30px;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.15;
+}
+
+.ifs-pms-gauge-subtitle {
+    font-size: 14.5px;
+    font-weight: 600;
+    color: #64748b;
+}
+
+.ifs-pms-gauge-progress-wrap {
+    width: 100%;
+}
+
+.ifs-pms-gauge-progress-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12.5px;
+    font-weight: 700;
+}
+
+.ifs-pms-gauge-progress-label {
+    color: #475569;
+}
+
+.ifs-pms-gauge-progress-val {
+    color: #0f172a;
+    font-weight: 800;
+}
+
+.ifs-pms-gauge-progress-track {
+    height: 12px;
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 10px;
+    position: relative;
+}
+
+.ifs-pms-gauge-progress-bar {
+    height: 100%;
+    border-radius: 8px;
+    transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Fast Operation Tiles */
+.ifs-pms-action-deck {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 18px;
+}
+
+.ifs-pms-action-card {
+    background: #ffffff;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    border-radius: 20px;
+    padding: 20px 24px;
+    text-decoration: none !important;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    box-shadow: 0 10px 25px -10px rgba(15, 23, 42, 0.04);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ifs-pms-action-card:hover {
+    transform: translateY(-3px);
+    border-color: #2d282a;
+    box-shadow: 0 16px 32px -8px rgba(2, 132, 199, 0.12);
+}
+
+.ifs-pms-action-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.ifs-pms-action-icon-blue { background: rgba(2, 132, 199, 0.12); color: #2d282a; }
+.ifs-pms-action-icon-green { background: rgba(16, 185, 129, 0.12); color: #10b981; }
+.ifs-pms-action-icon-purple { background: rgba(192, 132, 252, 0.12); color: #c084fc; }
+.ifs-pms-action-icon-red { background: rgba(239, 68, 68, 0.12); color: #ef4444; }
+
+.ifs-pms-action-title {
+    font-size: 14.5px;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0;
+}
+
+.ifs-pms-action-sub {
+    font-size: 12px;
+    color: #64748b;
+    margin-top: 4px;
+}
+
+/* KPI Metrics Matrix */
+.ifs-pms-kpi-quad {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+}
+
+.ifs-pms-kpi-brick {
+    background: #ffffff;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    border-radius: 24px;
+    padding: 24px;
+    box-shadow: 0 15px 30px -10px rgba(15, 23, 42, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.ifs-pms-kpi-brick::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: transparent;
+}
+
+.ifs-pms-kpi-brick-inflow::before { background: #10b981; }
+.ifs-pms-kpi-brick-admit::before { background: #2d282a; }
+.ifs-pms-kpi-brick-turnover::before { background: #c084fc; }
+.ifs-pms-kpi-brick-outflow::before { background: #ef4444; }
+
+.ifs-pms-kpi-meta-tag {
+    font-size: 11.5px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #64748b;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.ifs-pms-kpi-val {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+}
+
+.ifs-pms-kpi-foot {
+    font-size: 12.5px;
+    color: #475569;
+    margin-top: 10px;
+}
+
+/* Activity Stream & Financial Split */
+.ifs-pms-activity-grid {
+    display: grid;
+    grid-template-columns: 1.55fr 1fr;
+    gap: 24px;
+    align-items: start;
+}
+
+@media (max-width: 1080px) {
+    .ifs-pms-activity-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.ifs-pms-panel-card {
+    background: #ffffff;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    border-radius: 24px;
+    box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.07);
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.ifs-pms-panel-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 28px;
+    border-bottom: 1px solid #f1f5f9;
+    background: linear-gradient(to bottom, #fafbfd, #f8fafc);
+}
+
+.ifs-pms-panel-header-title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 800;
+    color: #0f172a;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.ifs-pms-feed-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 28px;
+    border-bottom: 1px solid #f1f5f9;
+    transition: background 0.15s ease;
+}
+
+.ifs-pms-feed-item:hover {
+    background: #f8fafc;
+}
+
+.ifs-pms-feed-item:last-child {
+    border-bottom: none;
+}
+
+.ifs-pms-feed-guest {
+    font-size: 14px;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.ifs-pms-feed-meta {
+    font-size: 12px;
+    color: #2d282a;
+    margin-top: 3px;
+}
+
+.ifs-pms-finance-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 28px;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 14px;
+    color: #475569;
+}
+
+.ifs-pms-finance-row:last-child {
+    border-bottom: none;
+}
+
+.ifs-pms-finance-total {
+    background: #f8fafc;
+    font-weight: 800;
+    border-top: 2px solid #cbd5e1;
+    padding: 20px 28px;
+}
+
+/* Custom Utility Classes for Zero Inline Rules */
+.ifs-pms-icon-primary { color: #0284c7; }
+.ifs-pms-icon-muted { color: #475569; }
+.ifs-pms-badge-neutral { background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; font-weight: 700; padding: 6px 12px; border-radius: 8px; }
+.ifs-pms-audit-form { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin: 0; width: 100%; }
+.ifs-pms-pill-label { font-size: 11px; font-weight: 700; color: #64748b; }
+.ifs-pms-btn-filter-action { background: #0284c7; color: #fff; height: 46px !important; padding: 0 20px !important; border-radius: 12px; }
+.ifs-pms-btn-print-action { background: #f1f5f9; color: #475569; border: 1.5px solid #cbd5e1; height: 46px !important; padding: 0 16px !important; border-radius: 12px; }
+.ifs-pms-text-strong { color: #0f172a; font-weight: 700; }
+.ifs-pms-text-danger { color: #ef4444; font-weight: 800; }
+.ifs-pms-text-muted { color: #64748b; font-size: 13px; }
+.ifs-pms-text-sub { font-size: 12.5px; color: #475569; }
+.ifs-pms-th-actions { text-align: right; }
+.ifs-pms-td-actions { text-align: right; white-space: nowrap; }
+.ifs-pms-inline-form { display: inline-block; margin: 0; }
+.ifs-pms-empty-state { text-align: center; padding: 56px 16px; color: #94a3b8; }
+.ifs-pms-empty-icon { font-size: 36px; opacity: 0.35; margin-bottom: 14px; display: block; }
+.ifs-pms-footer-label { font-weight: 700; color: #0f172a; }
+.ifs-pms-footer-total { color: #ef4444; font-size: 18px; }
+.ifs-pms-modal-val-strong { font-weight: 700; color: #0f172a; }
+.ifs-pms-btn-close-modal { width: 100%; height: 48px; border-radius: 12px; background: #f1f5f9; color: #475569; border: 1.5px solid #cbd5e1; }
+.ifs-pms-modal-actions { display: flex; flex-direction: column; gap: 16px; }
+.ifs-pms-btn-flex-2 { flex: 2; height: 50px; border-radius: 14px; font-weight: 800; font-size: 14.5px; }
+.ifs-pms-btn-flex-1 { flex: 1; height: 50px; border-radius: 14px; font-weight: 700; background: #f1f5f9; color: #475569; border: 1.5px solid #cbd5e1; }
+
+/* ==========================================================================
+   UNIFIED STAFF & SALARY PROVISIONING SUITE (ENTERPRISE UX v4)
+   ========================================================================== */
+
+.ifs-pms-staff-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Sub Navigation Tabs */
+.ifs-pms-subnav-bar {
+    display: flex;
+    width: 500px;
+    gap: 10px;
+    background: linear-gradient(135deg, rgba(241, 245, 249, 0.8) 0%, rgba(226, 232, 240, 0.6) 100%);
+    backdrop-filter: blur(12px);
+    padding: 8px;
+    border-radius: 16px;
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    box-sizing: border-box;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.ifs-pms-subnav-btn {
+    flex: 1 1 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 24px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    background: transparent;
+    color: #475569;
+    border: none !important;
+    outline: none;
+    transition: all 0.25s ease;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.ifs-pms-subnav-btn:hover {
+    color: #0f172a;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.ifs-pms-subnav-btn.active {
+    background: #ffffff !important;
+    color: #0284c7 !important;
+    box-shadow: 0 8px 24px rgba(2, 132, 199, 0.15), 0 2px 6px rgba(0, 0, 0, 0.04);
+    transform: translateY(-1px);
+}
+
+.ifs-pms-tab-pane {
+    display: none;
+}
+
+.ifs-pms-tab-pane.active {
+    display: block;
+    animation: ifsPmsFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes ifsPmsFadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.ifs-pms-panel-card {
+    background: #ffffff;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    border-radius: 24px;
+    box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.07);
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.ifs-pms-panel-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 32px;
+    border-bottom: 1px solid #f1f5f9;
+    background: linear-gradient(to bottom, #fafbfd, #f8fafc);
+}
+
+.ifs-pms-panel-title {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #0f172a;
+}
+
+.ifs-pms-form-box-centered {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.ifs-pms-form-stack {
+    padding: 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    box-sizing: border-box;
+}
+
+.ifs-pms-field-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0;
+}
+
+.ifs-pms-field-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: #475569;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+#wpcontent .ifs-pms-staff-wrapper input[type="text"],
+#wpcontent .ifs-pms-staff-wrapper input[type="email"],
+#wpcontent .ifs-pms-staff-wrapper input[type="password"],
+#wpcontent .ifs-pms-staff-wrapper input[type="number"],
+#wpcontent .ifs-pms-staff-wrapper input[type="date"],
+#wpcontent .ifs-pms-staff-wrapper select,
+#wpcontent .ifs-pms-modal-card input,
+#wpcontent .ifs-pms-modal-card select {
+    display: block !important;
+    width: 100% !important;
+    background: #ffffff !important;
+    border: 1.5px solid #cbd5e1 !important;
+    border-radius: 14px !important;
+    padding: 12px 18px !important;
+    font-size: 14.5px !important;
+    font-family: inherit !important;
+    color: #0f172a !important;
+    height: 50px !important;
+    box-sizing: border-box !important;
+    transition: all 0.25s ease !important;
+}
+
+#wpcontent .ifs-pms-staff-wrapper input:focus,
+#wpcontent .ifs-pms-staff-wrapper select:focus,
+#wpcontent .ifs-pms-modal-card input:focus,
+#wpcontent .ifs-pms-modal-card select:focus {
+    border-color: #0284c7 !important;
+    box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.12) !important;
+    outline: none !important;
+}
+
+.ifs-pms-search-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 32px;
+    border-bottom: 1px solid #f1f5f9;
+    gap: 16px;
+    flex-wrap: wrap;
+    background: #ffffff;
+}
+
+.ifs-pms-search-container {
+    position: relative;
+    flex: 1;
+    max-width: 380px;
+    min-width: 240px;
+}
+
+.ifs-pms-search-container i.search-icon {
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94a3b8;
+    font-size: 14px;
+    pointer-events: none;
+}
+
+#wpcontent .ifs-pms-search-container input {
+    padding-left: 44px !important;
+    height: 46px !important;
+    border-radius: 14px !important;
+}
+
+.ifs-pms-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.ifs-pms-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    text-align: left;
+}
+
+.ifs-pms-table th {
+    background: #f8fafc;
+    color: #64748b;
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 18px 24px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.ifs-pms-table td {
+    padding: 20px 24px;
+    border-bottom: 1px solid #f1f5f9;
+    color: #0f172a;
+    vertical-align: middle;
+}
+
+.ifs-pms-table tr:hover td {
+    background: #f8fafc;
+}
+
+/* High-End Profile Avatar System */
+.ifs-pms-staff-avatar-box {
+    width: 46px;
+    height: 46px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 17px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 16px;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+    border: 2px solid #ffffff;
+    overflow: hidden;
+}
+
+.ifs-pms-staff-avatar-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Modal Overlay */
+.ifs-pms-modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(8px);
+    z-index: 99999;
+    align-items: center;
+    justify-content: center;
+}
+
+.ifs-pms-modal-card {
+    background: #ffffff;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 24px;
+    width: 580px;
+    max-width: 95vw;
+    padding: 36px;
+    box-sizing: border-box;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+    animation: ifsPmsModalPop 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes ifsPmsModalPop {
+    from { opacity: 0; transform: scale(0.95) translateY(10px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Action Buttons */
+#wpcontent .ifs-pms-staff-wrapper .ifs-pms-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    box-sizing: border-box !important;
+    text-decoration: none !important;
+    transition: all 0.2s ease !important;
+}
+
+#wpcontent .ifs-pms-staff-wrapper .ifs-pms-btn-primary.ifs-pms-btn-lg {
+    height: 54px !important;
+    padding: 0 32px !important;
+    font-size: 15px !important;
+    font-weight: 800 !important;
+    border-radius: 16px !important;
+    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(2, 132, 199, 0.8) !important;
+    box-shadow: 0 8px 24px rgba(2, 132, 199, 0.45) !important;
+}
+
+#wpcontent .ifs-pms-staff-wrapper .ifs-pms-btn-primary.ifs-pms-btn-lg:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(2, 132, 199, 0.55) !important;
+}
+
+.ifs-pms-table .ifs-pms-btn-sm {
+    height: 36px !important;
+    padding: 0 14px !important;
+    font-size: 12.5px !important;
+    border-radius: 10px !important;
+    font-weight: 700 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    box-shadow: 0 2px 4px rgba(15, 23, 42, 0.03);
+}
+
+.ifs-pms-table .ifs-pms-btn-sm:hover {
+    transform: translateY(-2px);
+}
+
+.ifs-pms-table .ifs-pms-btn-view {
+    background: rgba(16, 185, 129, 0.08) !important;
+    color: #059669 !important;
+    border: 1.5px solid rgba(16, 185, 129, 0.25) !important;
+}
+.ifs-pms-table .ifs-pms-btn-view:hover {
+    background: #10b981 !important;
+    color: #ffffff !important;
+}
+
+.ifs-pms-table .ifs-pms-btn-edit {
+    background: rgba(2, 132, 199, 0.08) !important;
+    color: #0284c7 !important;
+    border: 1.5px solid rgba(2, 132, 199, 0.25) !important;
+}
+.ifs-pms-table .ifs-pms-btn-edit:hover {
+    background: #0284c7 !important;
+    color: #ffffff !important;
+}
+
+.ifs-pms-table .ifs-pms-btn-delete {
+    background: rgba(244, 63, 94, 0.08) !important;
+    color: #f43f5e !important;
+    border: 1.5px solid rgba(244, 63, 94, 0.25) !important;
+}
+.ifs-pms-table .ifs-pms-btn-delete:hover {
+    background: #f43f5e !important;
+    color: #ffffff !important;
+}
+
+.ifs-pms-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.ifs-pms-flex-gap-14 {
+    display: flex;
+    gap: 14px;
+    margin-top: 14px;
+}
+
+/* Additional Layout & Utility Helpers */
+.ifs-pms-icon-primary { color: #0284c7; }
+.ifs-pms-icon-muted { color: #475569; }
+.ifs-pms-badge-neutral { background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; font-weight: 700; padding: 6px 12px; border-radius: 8px; }
+.ifs-pms-avatar-upload-group { display: flex; gap: 10px; }
+.ifs-pms-btn-media-action { background: #f1f5f9; color: #475569; border: 1.5px solid #cbd5e1; height: 50px !important; border-radius: 14px; padding: 0 16px !important; }
+.ifs-pms-separator { border: 0; border-top: 1px solid #f1f5f9; margin: 6px 0; }
+.ifs-pms-separator-light { border: 0; border-top: 1px solid #f1f5f9; margin: 4px 0; }
+.ifs-pms-submit-wrap { margin-top: 10px; }
+.ifs-pms-directory-subtext { font-size: 12.5px; font-weight: 700; color: #64748b; }
+.ifs-pms-flex-center { display: flex; align-items: center; }
+.ifs-pms-text-user-name { color: #0f172a; font-size: 14px; }
+.ifs-pms-text-user-email { font-size: 11.5px; color: #64748b; }
+.ifs-pms-text-username { font-weight: 700; color: #0284c7; }
+.ifs-pms-text-payout { color: #10b981; }
+.ifs-pms-text-frequency { font-size: 11px; color: #64748b; }
+.ifs-pms-text-unset { color: #94a3b8; font-style: italic; font-size: 12.5px; }
+.ifs-pms-th-actions { text-align: right; }
+.ifs-pms-td-actions { text-align: right; white-space: nowrap; }
+.ifs-pms-inline-form { display: inline-block; margin: 0; }
+
+/* Modal Component Rules */
+.ifs-pms-modal-head-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+.ifs-pms-modal-close-btn { background: #f1f5f9; border: none; width: 32px; height: 32px; border-radius: 50%; font-size: 18px; cursor: pointer; color: #475569; display: flex; align-items: center; justify-content: center; }
+.ifs-pms-profile-preview-box { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; background: #f8fafc; padding: 16px; border-radius: 16px; border: 1px solid #e2e8f0; }
+.ifs-pms-avatar-lg { width: 56px; height: 56px; font-size: 20px; }
+.ifs-pms-profile-name { font-size: 16px; color: #0f172a; }
+.ifs-pms-profile-email { font-size: 12.5px; color: #64748b; }
+.ifs-pms-modal-details-stack { display: flex; flex-direction: column; gap: 16px; font-size: 14px; }
+.ifs-pms-modal-row { display: flex; justify-content: space-between; border-bottom: 1px solid #f1f5f9; padding-bottom: 12px; }
+.ifs-pms-modal-row-last { display: flex; justify-content: space-between; }
+.ifs-pms-modal-label { color: #64748b; font-weight: 600; }
+.ifs-pms-text-weight-bold { font-weight: 700; }
+.ifs-pms-modal-footer { margin-top: 28px; }
+.ifs-pms-btn-block { width: 100%; height: 48px; border-radius: 12px; background: #f1f5f9; color: #475569; border: 1.5px solid #cbd5e1; }
+.ifs-pms-modal-actions { display: flex; gap: 14px; margin-top: 14px; }
+.ifs-pms-btn-flex-2 { flex: 2; height: 50px; border-radius: 14px; font-weight: 800; font-size: 14.5px; }
+.ifs-pms-btn-flex-1 { flex: 1; height: 50px; border-radius: 14px; font-weight: 700; background: #f1f5f9; color: #475569; border: 1.5px solid #cbd5e1; }
+
+/* ==========================================================================
+   EXECUTIVE MEMBER DIRECTORY & PASS TERMINAL (Zero Inline CSS)
+   ========================================================================== */
+
+.ifs-pms-membership-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Sub Navigation Tabs */
+.ifs-pms-subnav-bar {
+    display: flex;
+    width: 500px;
+    gap: 10px;
+    background: linear-gradient(135deg, rgba(241, 245, 249, 0.8) 0%, rgba(226, 232, 240, 0.6) 100%);
+    backdrop-filter: blur(12px);
+    padding: 8px;
+    border-radius: 16px;
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    box-sizing: border-box;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.ifs-pms-subnav-btn {
+    flex: 1 1 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 24px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    background: transparent;
+    color: #475569;
+    border: none !important;
+    outline: none;
+    transition: all 0.25s ease;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.ifs-pms-subnav-btn:hover {
+    color: #0f172a;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.ifs-pms-subnav-btn.active {
+    background: #ffffff !important;
+    color: #0284c7 !important;
+    box-shadow: 0 8px 24px rgba(2, 132, 199, 0.15), 0 2px 6px rgba(0, 0, 0, 0.04);
+    transform: translateY(-1px);
+}
+
+.ifs-pms-tab-pane {
+    display: none;
+}
+
+.ifs-pms-tab-pane.active {
+    display: block;
+    animation: ifsPmsFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes ifsPmsFadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Layout & Form Controls */
+.ifs-pms-membership-layout {
+    display: grid;
+    grid-template-columns: minmax(380px, 440px) minmax(0, 1fr);
+    gap: 28px;
+    align-items: start;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+@media (max-width: 1180px) {
+    .ifs-pms-membership-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+.ifs-pms-panel-card {
+    background: #ffffff;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    border-radius: 24px;
+    box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.07);
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.ifs-pms-panel-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 32px;
+    border-bottom: 1px solid #f1f5f9;
+    background: linear-gradient(to bottom, #fafbfd, #f8fafc);
+}
+
+.ifs-pms-panel-title {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #0f172a;
+}
+
+.ifs-pms-form-stack {
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    box-sizing: border-box;
+}
+
+.ifs-pms-field-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0;
+}
+
+.ifs-pms-field-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: #475569;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+#wpcontent .ifs-pms-membership-layout input[type="text"],
+#wpcontent .ifs-pms-membership-layout input[type="number"],
+#wpcontent .ifs-pms-membership-layout input[type="tel"],
+#wpcontent .ifs-pms-membership-layout select,
+#wpcontent .ifs-pms-modal-card input[type="text"],
+#wpcontent .ifs-pms-modal-card input[type="number"],
+#wpcontent .ifs-pms-modal-card input[type="tel"],
+#wpcontent .ifs-pms-modal-card input[type="date"],
+#wpcontent .ifs-pms-modal-card select {
+    display: block !important;
+    width: 100% !important;
+    background: #ffffff !important;
+    border: 1.5px solid #cbd5e1 !important;
+    border-radius: 14px !important;
+    padding: 12px 18px !important;
+    font-size: 14.5px !important;
+    font-family: inherit !important;
+    color: #0f172a !important;
+    height: 50px !important;
+    box-sizing: border-box !important;
+    transition: all 0.25s ease !important;
+}
+
+#wpcontent .ifs-pms-membership-layout input:focus,
+#wpcontent .ifs-pms-membership-layout select:focus,
+#wpcontent .ifs-pms-modal-card input:focus,
+#wpcontent .ifs-pms-modal-card select:focus {
+    border-color: #0284c7 !important;
+    box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.12) !important;
+    outline: none !important;
+}
+
+/* Ultra-Luxurious Holographic Virtual RFID Pass Preview */
+.ifs-pms-rfid-card-stage {
+    perspective: 1200px;
+    position: sticky;
+    top: 24px;
+}
+
+.ifs-pms-virtual-rfid-card {
+    background: linear-gradient(135deg, #020617 0%, #0f172a 50%, #0369a1 100%);
+    border: 1.5px solid rgba(56, 189, 248, 0.45);
+    border-radius: 24px;
+    padding: 32px;
+    color: #ffffff;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(2, 6, 23, 0.45);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
+.ifs-pms-virtual-rfid-card:hover {
+    transform: translateY(-4px) rotateX(2deg);
+    box-shadow: 0 30px 60px -12px rgba(2, 6, 23, 0.55);
+}
+
+.ifs-pms-card-chip {
+    width: 48px;
+    height: 36px;
+    background: linear-gradient(135deg, #fef08a 0%, #ca8a04 100%);
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.35);
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.4);
+}
+
+.ifs-pms-card-chip::after {
+    content: '';
+    position: absolute;
+    inset: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+}
+
+.ifs-pms-card-watermark {
+    position: absolute;
+    right: -20px;
+    bottom: -35px;
+    font-size: 160px;
+    color: rgba(255, 255, 255, 0.04);
+    pointer-events: none;
+    user-select: none;
+}
+
+.ifs-pms-card-avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    object-fit: cover;
+    border: 2px solid rgba(56, 189, 248, 0.6);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    background: rgba(2, 132, 199, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 24px;
+    color: #38bdf8;
+    flex-shrink: 0;
+}
+
+/* Search Toolbar */
+.ifs-pms-search-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 32px;
+    border-bottom: 1px solid #f1f5f9;
+    gap: 16px;
+    flex-wrap: wrap;
+    background: #ffffff;
+}
+
+.ifs-pms-search-container {
+    position: relative;
+    flex: 1;
+    max-width: 380px;
+    min-width: 240px;
+}
+
+.ifs-pms-search-container i.search-icon {
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94a3b8;
+    font-size: 14px;
+    pointer-events: none;
+}
+
+#wpcontent .ifs-pms-search-container input {
+    padding-left: 44px !important;
+    padding-right: 36px !important;
+    height: 46px !important;
+    border-radius: 14px !important;
+}
+
+.ifs-pms-search-clear {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    color: #94a3b8;
+    cursor: pointer;
+    display: none;
+    padding: 4px;
+}
+
+.ifs-pms-search-clear:hover {
+    color: #0f172a;
+}
+
+/* Ledger Table */
+.ifs-pms-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.ifs-pms-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    text-align: left;
+}
+
+.ifs-pms-table th {
+    background: #f8fafc;
+    color: #64748b;
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 18px 24px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.ifs-pms-table td {
+    padding: 20px 24px;
+    border-bottom: 1px solid #f1f5f9;
+    color: #0f172a;
+    vertical-align: middle;
+}
+
+.ifs-pms-table tr:hover td {
+    background: #f8fafc;
+}
+
+/* Modal Styling */
+.ifs-pms-modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(8px);
+    z-index: 99999;
+    align-items: center;
+    justify-content: center;
+}
+
+.ifs-pms-modal-card {
+    background: #ffffff;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 24px;
+    width: 540px;
+    max-width: 95vw;
+    padding: 36px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+    box-sizing: border-box;
+    animation: ifsPmsModalPop 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes ifsPmsModalPop {
+    from { opacity: 0; transform: scale(0.95) translateY(10px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Action Buttons */
+#wpcontent .ifs-pms-membership-wrapper .ifs-pms-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    box-sizing: border-box !important;
+    text-decoration: none !important;
+    transition: all 0.2s ease !important;
+}
+
+#wpcontent .ifs-pms-membership-wrapper .ifs-pms-btn-primary.ifs-pms-btn-lg {
+    height: 54px !important;
+    padding: 0 32px !important;
+    font-size: 15px !important;
+    font-weight: 800 !important;
+    border-radius: 16px !important;
+    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(2, 132, 199, 0.8) !important;
+    box-shadow: 0 8px 24px rgba(2, 132, 199, 0.45) !important;
+}
+
+#wpcontent .ifs-pms-membership-wrapper .ifs-pms-btn-primary.ifs-pms-btn-lg:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(2, 132, 199, 0.55) !important;
+}
+
+.ifs-pms-table .ifs-pms-btn-sm {
+    height: 36px !important;
+    padding: 0 14px !important;
+    font-size: 12.5px !important;
+    border-radius: 10px !important;
+    font-weight: 700 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    box-shadow: 0 2px 4px rgba(15, 23, 42, 0.03);
+}
+
+.ifs-pms-table .ifs-pms-btn-sm:hover {
+    transform: translateY(-2px);
+}
+
+.ifs-pms-table .ifs-pms-btn-view {
+    background: rgba(16, 185, 129, 0.08) !important;
+    color: #059669 !important;
+    border: 1.5px solid rgba(16, 185, 129, 0.25) !important;
+}
+.ifs-pms-table .ifs-pms-btn-view:hover {
+    background: #10b981 !important;
+    color: #ffffff !important;
+}
+
+.ifs-pms-table .ifs-pms-btn-edit {
+    background: rgba(2, 132, 199, 0.08) !important;
+    color: #0284c7 !important;
+    border: 1.5px solid rgba(2, 132, 199, 0.25) !important;
+}
+.ifs-pms-table .ifs-pms-btn-edit:hover {
+    background: #0284c7 !important;
+    color: #ffffff !important;
+}
+
+.ifs-pms-table .ifs-pms-btn-delete {
+    background: rgba(244, 63, 94, 0.08) !important;
+    color: #f43f5e !important;
+    border: 1.5px solid rgba(244, 63, 94, 0.25) !important;
+}
+.ifs-pms-table .ifs-pms-btn-delete:hover {
+    background: #f43f5e !important;
+    color: #ffffff !important;
+}
+
+/* Additional Layout, Utility & Modal Component Helpers */
+.ifs-pms-icon-primary { color: #0284c7; }
+.ifs-pms-icon-muted { color: #475569; }
+.ifs-pms-badge-neutral { background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; font-weight: 700; padding: 6px 12px; border-radius: 8px; }
+.ifs-pms-avatar-upload-row { display: flex; gap: 12px; align-items: center; }
+.ifs-pms-flex-1 { flex: 1; }
+.ifs-pms-btn-media { background: #f1f5f9; color: #475569; border: 1.5px solid #cbd5e1; height: 50px !important; border-radius: 14px; padding: 0 18px !important; }
+.ifs-pms-btn-submit-block { width: 100%; margin-top: 6px; }
+.ifs-pms-record-counter-text { font-size: 12.5px; font-weight: 700; color: #64748b; }
+.ifs-pms-th-actions { text-align: right; }
+.ifs-pms-td-actions { text-align: right; white-space: nowrap; }
+.ifs-pms-text-uid { font-weight: 800; color: #0284c7; }
+.ifs-pms-table-profile-row { display: flex; align-items: center; gap: 14px; }
+.ifs-pms-table-avatar-img { width: 40px; height: 40px; border-radius: 12px; object-fit: cover; border: 1.5px solid #cbd5e1; flex-shrink: 0; }
+.ifs-pms-table-avatar-fallback { width: 40px; height: 40px; border-radius: 12px; background: rgba(2, 132, 199, 0.1); color: #0284c7; font-weight: 800; font-size: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.ifs-pms-table-name { color: #0f172a; font-size: 14px; }
+.ifs-pms-table-phone { color: #64748b; font-family: inherit; font-size: 12px; }
+.ifs-pms-table-plan-title { font-weight: 700; font-size: 13.5px; color: #0f172a; }
+.ifs-pms-table-plan-amount { font-size: 11.5px; color: #64748b; }
+.ifs-pms-table-expiry { font-size: 12.5px; }
+.ifs-pms-inline-form { display: inline-block; margin: 0; }
+.ifs-pms-empty-state { text-align: center; padding: 56px 16px; color: #94a3b8; }
+.ifs-pms-empty-icon { font-size: 36px; opacity: 0.35; margin-bottom: 14px; display: block; }
+
+.ifs-pms-text-align-center { text-align: center; }
+.ifs-pms-modal-head-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+.ifs-pms-modal-close-btn { background: #f1f5f9; border: none; width: 32px; height: 32px; border-radius: 50%; font-size: 18px; cursor: pointer; color: #475569; display: flex; align-items: center; justify-content: center; }
+.ifs-pms-modal-rfid-preview { text-align: left; margin-bottom: 24px; }
+.ifs-pms-card-head-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+.ifs-pms-card-tier-pill { font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; }
+.ifs-pms-card-tier-pill-small { font-size: 11px; text-transform: uppercase; }
+.ifs-pms-card-profile-row { display: flex; gap: 18px; align-items: center; margin-bottom: 24px; }
+.ifs-pms-card-business-title { font-size: 10px; font-weight: 800; letter-spacing: 1.4px; text-transform: uppercase; color: #38bdf8; margin-bottom: 4px; }
+.ifs-pms-card-holder-name { font-size: 18px; font-weight: 800; letter-spacing: -0.2px; text-shadow: 0 1px 3px rgba(0,0,0,0.5); }
+.ifs-pms-card-footer-row { display: flex; justify-content: space-between; align-items: flex-end; font-size: 12px; color: #94a3b8; }
+.ifs-pms-card-footer-label { font-size: 9px; text-transform: uppercase; letter-spacing: 0.6px; color: #64748b; }
+.ifs-pms-card-token { color: #ffffff; font-size: 13px; letter-spacing: 1px; }
+.ifs-pms-card-expiry { color: #38bdf8; font-weight: 800; }
+.ifs-pms-text-align-right { text-align: right; }
+.ifs-pms-modal-avatar-img { width: 100%; height: 100%; border-radius: 14px; object-fit: cover; }
+.ifs-pms-modal-actions-split { display: flex; gap: 12px; }
+.ifs-pms-modal-print-btn { flex: 2; height: 48px; border-radius: 14px; font-weight: 800; }
+.ifs-pms-modal-close-action-btn { flex: 1; height: 48px; border-radius: 14px; background: #f1f5f9; color: #475569; border: 1.5px solid #cbd5e1; }
+.ifs-pms-modal-holder-title { font-size: 18px; font-weight: 800; }
+.ifs-pms-modal-holder-phone { font-size: 12px; color: #94a3b8; }
+.ifs-pms-grid-plan-fee { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 16px; }
+.ifs-pms-btn-flex-2 { flex: 2; height: 50px; border-radius: 14px; font-weight: 800; font-size: 14.5px; }
+.ifs-pms-btn-flex-1 { flex: 1; height: 50px; border-radius: 14px; font-weight: 700; background: #f1f5f9; color: #475569; border: 1.5px solid #cbd5e1; }
+
+@media print {
+    body * { visibility: hidden; }
+    #ifsPmsViewMemberModal, #ifsPmsViewMemberModal * { visibility: visible; }
+    #ifsPmsViewMemberModal { position: absolute; left: 0; top: 0; width: 100%; background: #ffffff !important; }
+    .no-print { display: none !important; }
+}
+/* ==========================================================================
+   PATRON DIRECTORY & ADVANCED INTELLIGENCE SUITE (Zero Inline CSS)
+   ========================================================================== */
+.ifs-pms-customer-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.ifs-pms-pos-card {
+    background: #ffffff;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    border-radius: 24px;
+    box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.07);
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.ifs-pms-pos-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 32px;
+    border-bottom: 1px solid #f1f5f9;
+    background: linear-gradient(to bottom, #fafbfd, #f8fafc);
+}
+
+.ifs-pms-pos-title {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #0f172a;
+}
+
+.ifs-pms-search-bar {
+    display: flex;
+    gap: 16px;
+    padding: 22px 32px;
+    border-bottom: 1px solid #f1f5f9;
+    align-items: center;
+    background: #ffffff;
+}
+
+.ifs-pms-search-box {
+    position: relative;
+    flex: 1;
+    min-width: 280px;
+}
+
+.ifs-pms-search-box i.search-icon {
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94a3b8;
+    font-size: 14px;
+    pointer-events: none;
+}
+
+#wpcontent .ifs-pms-search-box input {
+    padding-left: 44px !important;
+    height: 46px !important;
+    border-radius: 14px !important;
+    width: 100% !important;
+    border: 1.5px solid #cbd5e1 !important;
+    background: #ffffff !important;
+    color: #0f172a !important;
+    font-size: 14.5px !important;
+    box-sizing: border-box !important;
+}
+
+#wpcontent .ifs-pms-search-box input:focus {
+    border-color: #0284c7 !important;
+    box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.12) !important;
+    outline: none !important;
+}
+
+.ifs-pms-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.ifs-pms-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    text-align: left;
+}
+
+.ifs-pms-table th {
+    background: #f8fafc;
+    color: #64748b;
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 18px 24px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.ifs-pms-table td {
+    padding: 20px 24px;
+    border-bottom: 1px solid #f1f5f9;
+    color: #0f172a;
+    vertical-align: middle;
+}
+
+.ifs-pms-table tr:hover td {
+    background: #f8fafc;
+}
+
+/* Action Buttons & Utilities */
+#wpcontent .ifs-pms-customer-wrapper .ifs-pms-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    text-decoration: none !important;
+    transition: all 0.2s ease !important;
+}
+
+.ifs-pms-table .ifs-pms-btn-sm {
+    height: 36px !important;
+    padding: 0 14px !important;
+    font-size: 12.5px !important;
+    border-radius: 10px !important;
+    font-weight: 700 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    cursor: pointer;
+    border: none;
+    text-decoration: none !important;
+    transition: all 0.2s ease;
+}
+.ifs-pms-table .ifs-pms-btn-sm:hover { transform: translateY(-2px); }
+
+.ifs-pms-table .ifs-pms-btn-view { background: rgba(16, 185, 129, 0.08); color: #059669; border: 1.5px solid rgba(16, 185, 129, 0.25); }
+.ifs-pms-table .ifs-pms-btn-view:hover { background: #10b981; color: #fff; }
+
+.ifs-pms-table .ifs-pms-btn-edit { background: rgba(2, 132, 199, 0.08); color: #0284c7; border: 1.5px solid rgba(2, 132, 199, 0.25); }
+.ifs-pms-table .ifs-pms-btn-edit:hover { background: #0284c7; color: #fff; }
+
+.ifs-pms-table .ifs-pms-btn-delete { background: rgba(244, 63, 94, 0.08); color: #f43f5e; border: 1.5px solid rgba(244, 63, 94, 0.25); }
+.ifs-pms-table .ifs-pms-btn-delete:hover { background: #f43f5e; color: #fff; }
+
+.ifs-pms-pagination-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 32px;
+    background: #f8fafc;
+    border-top: 1px solid #e2e8f0;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.ifs-pms-page-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    padding: 0 10px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none !important;
+    background: #ffffff;
+    color: #475569;
+    border: 1.5px solid #cbd5e1;
+}
+.ifs-pms-page-num.active {
+    background: #0284c7 !important;
+    color: #ffffff !important;
+    border-color: #0284c7 !important;
+}
+
+.ifs-pms-inline-form-card {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 20px;
+    padding: 32px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+    max-width: 600px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.ifs-pms-field-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.ifs-pms-field-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: #475569;
+    margin-bottom: 8px;
+}
+
+#wpcontent .ifs-pms-inline-form-card input {
+    height: 50px !important;
+    border-radius: 14px !important;
+    border: 1.5px solid #cbd5e1 !important;
+    padding: 0 18px !important;
+    width: 100% !important;
+    font-size: 15px !important;
+    background: #ffffff !important;
+    color: #0f172a !important;
+    box-sizing: border-box !important;
+}
+
+/* Extended Intelligence Grid & Components */
+.ifs-pms-profile-grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 24px;
+}
+@media (max-width: 1024px) {
+    .ifs-pms-profile-grid-4 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+    .ifs-pms-profile-grid-4 { grid-template-columns: 1fr; }
+}
+.ifs-pms-profile-stat {
+    background: #f8fafc;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+}
+
+.ifs-pms-icon-primary { color: #0284c7; }
+.ifs-pms-icon-success { color: #10b981; }
+.ifs-pms-badge-neutral { background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; font-weight: 700; padding: 6px 12px; border-radius: 8px; }
+.ifs-pms-badge-info { background: rgba(2, 132, 199, 0.08); color: #0284c7; font-weight: 800; }
+.ifs-pms-flex-gap-10 { display: flex; gap: 10px; }
+.ifs-pms-flex-gap-6 { display: flex; gap: 6px; }
+.ifs-pms-btn-action-print { background: #ffffff; color: #0284c7; border-color: #0284c7; }
+.ifs-pms-btn-action-back { background: #f1f5f9; color: #475569; border-color: #cbd5e1; }
+.ifs-pms-profile-content-wrap { padding: 32px; }
+.ifs-pms-stat-header { font-size: 11px; font-weight: 800; text-transform: uppercase; color: #64748b; letter-spacing: 0.05em; }
+.ifs-pms-stat-value-dark { font-size: 17px; font-weight: 800; color: #0f172a; margin-top: 6px; }
+.ifs-pms-stat-value-green { font-size: 17px; font-weight: 800; color: #10b981; margin-top: 6px; }
+.ifs-pms-stat-value-blue { font-size: 17px; font-weight: 800; color: #0284c7; margin-top: 6px; }
+.ifs-pms-stat-value-purple { font-size: 17px; font-weight: 800; color: #c084fc; margin-top: 6px; }
+.ifs-pms-analytics-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 28px; }
+.ifs-pms-analytics-box { background: #fafbfd; border: 1.5px solid #e2e8f0; border-radius: 18px; padding: 22px 26px; }
+.ifs-pms-analytics-title { margin: 0 0 12px 0; font-size: 13.5px; font-weight: 800; color: #0f172a; text-transform: uppercase; letter-spacing: 0.04em; }
+.ifs-pms-analytics-stack { display: flex; flex-direction: column; gap: 8px; font-size: 13.5px; }
+.ifs-pms-analytics-row { display: flex; justify-content: space-between; }
+.ifs-pms-analytics-label { color: #64748b; font-weight: 600; }
+.ifs-pms-section-title { font-size: 15px; font-weight: 800; color: #0f172a; margin: 0 0 16px 0; display: flex; align-items: center; gap: 8px; }
+.ifs-pms-table-container-bordered { border: 1px solid #e2e8f0; border-radius: 16px; }
+.ifs-pms-th-right { text-align: right; }
+.ifs-pms-text-weight-bold { font-weight: 800; }
+.ifs-pms-text-weight-heavy { font-weight: 800; color: #0f172a; }
+.ifs-pms-text-weight-semi { font-weight: 600; color: #475569; }
+.ifs-pms-text-dark { color: #0f172a; }
+.ifs-pms-text-muted { color: #475569; }
+.ifs-pms-text-blue { color: #0284c7; }
+.ifs-pms-text-green { color: #10b981; }
+.ifs-pms-text-sm { font-size: 13px; }
+.ifs-pms-text-xs { font-size: 12.5px; }
+.ifs-pms-text-sub { color: #64748b; }
+.ifs-pms-room-badge { font-size: 11px; color: #0284c7; font-weight: 600; }
+.ifs-pms-empty-tickets { text-align: center; padding: 40px; color: #64748b; }
+.ifs-pms-form-content-pad { padding: 40px; }
+.ifs-pms-mb-28 { margin-bottom: 28px; }
+.ifs-pms-modal-actions-split { display: flex; gap: 14px; }
+.ifs-pms-btn-submit-action { flex: 2; height: 50px; border-radius: 14px; font-weight: 800; font-size: 15px; background: #0284c7; color: #fff; border: none; }
+.ifs-pms-btn-cancel-action { flex: 1; height: 50px; border-radius: 14px; text-decoration: none; display: flex; align-items: center; justify-content: center; font-weight: 700; background: #f1f5f9; color: #475569; border: 1.5px solid #cbd5e1; }
+.ifs-pms-empty-state-large { text-align: center; padding: 56px; color: #64748b; }
+.ifs-pms-empty-icon-large { font-size: 36px; margin-bottom: 14px; opacity: 0.3; display: block; }
+.ifs-pms-inline-form { display: inline-block; margin: 0; }
+.ifs-pms-pagination-counter { font-size: 13px; color: #475569; font-weight: 600; }
+
+/* ==========================================================================
+   LIVE POOL FLOOR STATUS & ACTIVE SWIMMER TELEMETRY (Zero Inline CSS)
+   ========================================================================== */
+.oz-live-status-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.oz-status-hero {
+    background: #ffffff;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    border-radius: 24px;
+    padding: 28px 36px;
+    box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.07);
+    display: grid;
+    grid-template-columns: 1.2fr 1fr auto;
+    gap: 32px;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+@media (max-width: 980px) {
+    .oz-status-hero {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+}
+
+.oz-status-hero-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.oz-status-orb {
+    width: 58px;
+    height: 58px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, rgba(2, 132, 199, 0.14) 0%, rgba(56, 189, 248, 0.05) 100%);
+    border: 1px solid rgba(2, 132, 199, 0.25);
+    color: #0284c7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    flex-shrink: 0;
+}
+
+.oz-status-title-tag {
+    font-size: 11.5px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #64748b;
+}
+
+.oz-status-count {
+    font-size: 34px;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.1;
+}
+
+.oz-status-sub {
+    font-size: 14.5px;
+    font-weight: 600;
+    color: #64748b;
+}
+
+.oz-progress-track {
+    height: 12px;
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 10px;
+    position: relative;
+}
+
+.oz-progress-fill {
+    height: 100%;
+    border-radius: 8px;
+    transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.oz-telemetry-panel {
+    background: #ffffff;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    border-radius: 24px;
+    box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.07);
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.oz-telemetry-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 32px;
+    border-bottom: 1px solid #f1f5f9;
+    background: linear-gradient(to bottom, #fafbfd, #f8fafc);
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.oz-telemetry-title {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 800;
+    color: #0f172a;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.oz-live-clock-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 18px;
+    border-radius: 30px;
+    background: #0f172a;
+    border: 1.5px solid #1e293b;
+    font-size: 13.5px;
+    font-weight: 800;
+    color: #38bdf8;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
+}
+
+.oz-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.oz-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    text-align: left;
+}
+
+.oz-table th {
+    background: #f8fafc;
+    color: #64748b;
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 18px 24px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.oz-table td {
+    padding: 18px 24px;
+    border-bottom: 1px solid #f1f5f9;
+    color: #0f172a;
+    vertical-align: middle;
+}
+
+.oz-table tr:hover td {
+    background: #f8fafc;
+}
+
+/* Live Row Watcher Clock Component */
+.oz-row-clock-pill {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding: 8px 14px;
+    border-radius: 12px;
+    font-size: 12.5px;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    font-family: var(--ifs-font-mono, monospace);
+    min-width: 195px;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.oz-clock-safe {
+    background: #ecfdf5;
+    color: #059669;
+    border: 1.5px solid #a7f3d0;
+}
+
+.oz-clock-warning {
+    background: #fffbeb;
+    color: #d97706;
+    border: 1.5px solid #fde68a;
+}
+
+.oz-clock-overstay {
+    background: #fef2f2;
+    color: #dc2626;
+    border: 1.5px solid #fecaca;
+    animation: ozPulseRowClock 1.5s infinite ease-in-out;
+}
+
+.oz-surcharge-text {
+    font-size: 11px;
+    font-weight: 700;
+    color: #b91c1c;
+    background: rgba(254, 202, 202, 0.5);
+    padding: 1px 6px;
+    border-radius: 4px;
+    margin-top: 2px;
+}
+
+.oz-checkout-btn {
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    color: #475569;
+    padding: 7px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 11.5px;
+    transition: all 0.2s ease;
+}
+
+.oz-checkout-btn:hover {
+    background: #ef4444;
+    border-color: #ef4444;
+    color: #ffffff;
+}
+
+.oz-checkout-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+@keyframes ozPulseRowClock {
+    0% { transform: scale(1); box-shadow: 0 0 0 rgba(239, 68, 68, 0); }
+    50% { transform: scale(1.02); box-shadow: 0 0 12px rgba(239, 68, 68, 0.2); }
+    100% { transform: scale(1); box-shadow: 0 0 0 rgba(239, 68, 68, 0); }
+}
+
+/* Additional Utility Helpers */
+.oz-notice-spacing { margin: 15px 0; }
+.oz-progress-label-row { display: flex; justify-content: space-between; font-size: 12.5px; font-weight: 700; }
+.oz-progress-title { color: #64748b; }
+.oz-progress-pct { color: #0f172a; }
+.oz-status-pill-padded { padding: 8px 16px; font-size: 12.5px; }
+.oz-telemetry-icon { color: #0284c7; }
+.oz-th-right { text-align: right; }
+.oz-td-right { text-align: right; }
+.oz-text-blue { color: #0284c7; }
+.oz-text-weight-heavy { font-weight: 800; }
+.oz-text-weight-bold { font-weight: 700; }
+.oz-text-dark { color: #0f172a; }
+.oz-text-sub { color: #475569; }
+.oz-badge-soft-blue { background: rgba(2, 132, 199, 0.08); color: #0284c7; font-weight: 800; }
+.oz-empty-state { text-align: center; padding: 60px 20px; color: #94a3b8; }
+.oz-empty-icon-large { font-size: 40px; margin-bottom: 14px; opacity: 0.35; display: block; }
+
+/**
+ * Ozone Skypool OS - POS, Tickets Registry & Detail Stylesheet
+ * File: assets/css/pos-tickets.css
+ */
+
+/* ==========================================================================
+   1. Details Dossier Sub-View
+   ========================================================================== */
+.oz-detail-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    max-width: 920px;
+    margin: 24px auto 0 0;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+.oz-detail-card {
+    background: #ffffff;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    border-radius: 24px;
+    box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.08);
+    overflow: hidden;
+}
+
+.oz-detail-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 26px 36px;
+    background: linear-gradient(to bottom, #fafbfd, #f8fafc);
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.oz-detail-body {
+    padding: 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.oz-detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+@media (max-width: 760px) {
+    .oz-detail-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.oz-info-group {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.oz-info-label {
+    font-size: 11.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #64748b;
+    letter-spacing: 0.06em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.oz-info-value {
+    font-size: 16px;
+    font-weight: 800;
+    color: #0f172a;
+}
+
+/* ==========================================================================
+   2. Main Front Desk POS Layout & Cards
+   ========================================================================== */
+.oz-pos-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.oz-subnav-bar {
+    display: flex;
+    width: 400px;
+    gap: 10px;
+    background: linear-gradient(135deg, rgba(241, 245, 249, 0.8) 0%, rgba(226, 232, 240, 0.6) 100%);
+    backdrop-filter: blur(12px);
+    padding: 6px;
+    border-radius: 16px;
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    box-sizing: border-box;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.oz-subnav-btn {
+    flex: 1 1 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    background: transparent;
+    color: #475569;
+    border: none !important;
+    outline: none;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    text-align: center;
+    white-space: nowrap;
+}
+
+.oz-subnav-btn:hover {
+    color: #0f172a;
+    background: rgba(255, 255, 255, 0.6);
+}
+
+.oz-subnav-btn.active {
+    background: #ffffff !important;
+    color: #0284c7 !important;
+    box-shadow: 0 8px 24px rgba(2, 132, 199, 0.15), 0 2px 6px rgba(0, 0, 0, 0.04);
+    transform: translateY(-1px);
+}
+
+.oz-tab-pane {
+    display: none;
+}
+
+.oz-tab-pane.active {
+    display: block;
+    animation: ozFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes ozFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.oz-pos-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.45fr) minmax(360px, 420px);
+    gap: 28px;
+    align-items: start;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+@media (max-width: 1200px) {
+    .oz-pos-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+.oz-pos-card {
+    background: #ffffff;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    border-radius: 24px;
+    box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.06);
+    overflow: hidden;
+}
+
+.oz-pos-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 30px;
+    border-bottom: 1px solid #f1f5f9;
+    background: linear-gradient(to bottom, #fafbfd, #f8fafc);
+}
+
+.oz-pos-title {
+    margin: 0;
+    font-size: 16.5px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #0f172a;
+    letter-spacing: -0.01em;
+}
+
+.oz-pos-form-wrap {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* ==========================================================================
+   3. Patron Classifications & Form Fields
+   ========================================================================== */
+.oz-guest-type-selector {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+@media (max-width: 600px) {
+    .oz-guest-type-selector {
+        grid-template-columns: 1fr;
+    }
+}
+
+.oz-type-pill {
+    background: #f8fafc;
+    border: 2px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 12px 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    user-select: none;
+}
+
+.oz-type-pill i {
+    font-size: 20px;
+    color: #64748b;
+    transition: color 0.2s ease;
+}
+
+.oz-type-pill div {
+    display: flex;
+    flex-direction: column;
+}
+
+.oz-type-pill strong {
+    font-size: 13.5px;
+    color: #0f172a;
+}
+
+.oz-type-pill small {
+    font-size: 11px;
+    color: #64748b;
+    margin-top: 2px;
+}
+
+.oz-type-pill:hover {
+    border-color: #cbd5e1;
+    background: #f1f5f9;
+}
+
+.oz-type-pill.active {
+    background: rgba(2, 132, 199, 0.06);
+    border-color: #0284c7;
+    box-shadow: 0 4px 14px rgba(2, 132, 199, 0.12);
+}
+
+.oz-type-pill.active i,
+.oz-type-pill.active strong {
+    color: #0284c7;
+}
+
+.oz-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+@media (max-width: 760px) {
+    .oz-grid-2 {
+        grid-template-columns: 1fr;
+    }
+}
+
+.oz-field-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0;
+}
+
+.oz-field-label {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #475569;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+#wpcontent .oz-pos-layout input[type="text"],
+#wpcontent .oz-pos-layout input[type="number"],
+#wpcontent .oz-pos-layout input[type="tel"] {
+    display: block !important;
+    width: 100% !important;
+    background: #ffffff !important;
+    border: 1.5px solid #cbd5e1 !important;
+    border-radius: 12px !important;
+    padding: 12px 16px !important;
+    font-size: 14px !important;
+    font-family: inherit !important;
+    color: #0f172a !important;
+    height: 48px !important;
+    box-sizing: border-box !important;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+#wpcontent .oz-pos-layout input:focus {
+    border-color: #0284c7 !important;
+    box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.12) !important;
+    outline: none !important;
+}
+
+#wpcontent .oz-pos-layout input.oz-input-invalid {
+    border-color: #ef4444 !important;
+    box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.15) !important;
+}
+
+/* ==========================================================================
+   4. Modular Tier Decks & Switches
+   ========================================================================== */
+.oz-modular-deck {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+}
+
+.oz-tier-box {
+    background: #f8fafc;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 18px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity: 0.72;
+}
+
+.oz-tier-box.is-enabled {
+    background: #ffffff;
+    border-color: #0284c7;
+    box-shadow: 0 10px 25px -5px rgba(2, 132, 199, 0.12), 0 2px 6px rgba(0, 0, 0, 0.02);
+    opacity: 1;
+}
+
+.oz-tier-box-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px dashed #e2e8f0;
+    padding-bottom: 14px;
+}
+
+.oz-tier-title {
+    font-size: 15px;
+    font-weight: 800;
+    color: #0f172a;
+}
+
+.oz-tier-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    color: #0284c7;
+    background: rgba(2, 132, 199, 0.08);
+    padding: 2px 8px;
+    border-radius: 6px;
+    margin-top: 4px;
+}
+
+.oz-switch {
+    position: relative;
+    display: inline-block;
+    width: 46px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+.oz-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.oz-slider {
+    position: absolute;
+    cursor: pointer;
+    inset: 0;
+    background-color: #cbd5e1;
+    border-radius: 24px;
+    transition: 0.25s;
+}
+
+.oz-slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    transition: 0.25s;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.oz-switch input:checked + .oz-slider {
+    background-color: #0284c7;
+}
+
+.oz-switch input:checked + .oz-slider:before {
+    transform: translateX(22px);
+}
+
+.oz-tier-controls-row {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    gap: 12px;
+}
+
+@media (max-width: 650px) {
+    .oz-tier-controls-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+.oz-metric-pill {
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    padding: 8px 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+}
+
+.oz-metric-label {
+    font-size: 10.5px;
+    font-weight: 700;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.oz-mini-qty {
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    height: 32px;
+    padding: 2px;
+    box-sizing: border-box;
+}
+
+.oz-mini-btn {
+    width: 26px;
+    height: 26px;
+    background: #f1f5f9;
+    border: none;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #0f172a;
+    font-size: 11px;
+    transition: background 0.15s;
+}
+
+.oz-mini-btn:hover {
+    background: #e2e8f0;
+    color: #0284c7;
+}
+
+.oz-mini-input {
+    width: 100% !important;
+    height: 100% !important;
+    text-align: center;
+    border: none !important;
+    background: transparent !important;
+    font-size: 13.5px !important;
+    font-weight: 800 !important;
+    color: #0f172a !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+}
+
+/* ==========================================================================
+   5. Amenities, Addons & Payment Tender Buttons
+   ========================================================================== */
+.oz-addon-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+@media (max-width: 600px) {
+    .oz-addon-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.oz-addon-item {
+    background: #f8fafc;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    user-select: none;
+    transition: all 0.2s ease;
+}
+
+.oz-addon-item:hover {
+    border-color: #cbd5e1;
+    background: #f1f5f9;
+}
+
+.oz-addon-item.selected {
+    background: rgba(2, 132, 199, 0.05);
+    border-color: #0284c7;
+    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.08);
+}
+
+.oz-addon-item.selected i {
+    color: #0284c7;
+}
+
+.oz-tender-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+@media (max-width: 700px) {
+    .oz-tender-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.oz-tender-box {
+    background: #f8fafc;
+    border: 2px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 14px 10px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #475569;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.oz-tender-box:hover {
+    border-color: #cbd5e1;
+    transform: translateY(-2px);
+    background: #f1f5f9;
+}
+
+.oz-tender-box.active {
+    background: rgba(2, 132, 199, 0.08);
+    color: #0284c7;
+    border-color: #0284c7;
+    box-shadow: 0 6px 16px rgba(2, 132, 199, 0.16);
+}
+
+.oz-quick-cash-row {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.oz-quick-cash-row .oz-btn-sm {
+    height: 32px !important;
+    padding: 0 14px !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    font-family: monospace !important;
+    background: #f1f5f9 !important;
+    border: 1.5px solid #e2e8f0 !important;
+    color: #475569 !important;
+    border-radius: 8px !important;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.oz-quick-cash-row .oz-btn-sm:hover {
+    border-color: #0284c7;
+    color: #0284c7;
+    background: #ffffff !important;
+}
+
+#wpcontent .oz-pos-layout .oz-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    font-weight: 800 !important;
+    cursor: pointer !important;
+    border-radius: 14px !important;
+    transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+#wpcontent .oz-pos-layout .oz-btn-primary.oz-btn-lg {
+    height: 54px !important;
+    font-size: 15px !important;
+    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(2, 132, 199, 0.8) !important;
+    box-shadow: 0 10px 24px rgba(2, 132, 199, 0.4) !important;
+}
+
+#wpcontent .oz-pos-layout .oz-btn-primary.oz-btn-lg:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 28px rgba(2, 132, 199, 0.5) !important;
+}
+
+#wpcontent .oz-pos-layout .oz-btn-secondary.oz-btn-lg {
+    height: 54px !important;
+    font-size: 14.5px !important;
+    background: #ffffff !important;
+    color: #475569 !important;
+    border: 1.5px solid #cbd5e1 !important;
+}
+
+#wpcontent .oz-pos-layout .oz-btn-secondary.oz-btn-lg:hover {
+    background: #f8fafc !important;
+    color: #0f172a !important;
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   6. Live Terminal Receipt Preview
+   ========================================================================== */
+.oz-receipt-preview-card {
+    background: #ffffff;
+    color: #0f172a;
+    border-radius: 20px;
+    padding: 24px;
+    font-family: monospace;
+    box-shadow: 0 20px 45px -12px rgba(15, 23, 42, 0.1);
+    border: 1.5px solid #cbd5e1;
+    position: sticky;
+    top: 24px;
+}
+
+.oz-receipt-sep {
+    border-top: 1.5px dashed #cbd5e1;
+    margin: 14px 0;
+}
+
+.oz-receipt-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    line-height: 1.75;
+}
+
+.oz-receipt-rules {
+    margin-top: 14px;
+    padding-top: 10px;
+    border-top: 1px dashed #cbd5e1;
+    text-align: left;
+}
+
+.oz-rules-title {
+    font-size: 9px;
+    font-weight: 800;
+    color: #475569;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    text-align: center;
+    margin-bottom: 6px;
+}
+
+.oz-rules-list {
+    margin: 0;
+    padding-left: 14px;
+    list-style-type: square;
+    color: #64748b;
+    font-size: 8.5px;
+    line-height: 1.5;
+}
+
+.oz-rules-list li {
+    margin-bottom: 2px;
+}
+
+/* ==========================================================================
+   7. Ledger Table, Search Bar, Pagination & Modals
+   ========================================================================== */
+.oz-search-bar {
+    display: flex;
+    gap: 16px;
+    padding: 20px 28px;
+    border-bottom: 1px solid #f1f5f9;
+    align-items: center;
+    background: #ffffff;
+}
+
+.oz-search-box {
+    position: relative;
+    flex: 1;
+    min-width: 260px;
+}
+
+.oz-search-box i.search-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94a3b8;
+    font-size: 13px;
+    pointer-events: none;
+}
+
+#wpcontent .oz-search-box input {
+    padding-left: 42px !important;
+    height: 44px !important;
+    border-radius: 12px !important;
+}
+
+#wpcontent .oz-search-bar select {
+    min-width: 180px !important;
+    height: 44px !important;
+    border-radius: 12px !important;
+    font-weight: 700 !important;
+}
+
+.oz-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.oz-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+    text-align: left;
+}
+
+.oz-table th {
+    background: #f8fafc;
+    color: #64748b;
+    font-weight: 700;
+    font-size: 11.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 16px 22px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.oz-table td {
+    padding: 18px 22px;
+    border-bottom: 1px solid #f1f5f9;
+    color: #0f172a;
+    vertical-align: middle;
+}
+
+.oz-table tr:hover td {
+    background: #f8fafc;
+}
+
+.oz-table .oz-btn-sm {
+    height: 34px !important;
+    padding: 0 12px !important;
+    font-size: 12px !important;
+    border-radius: 8px !important;
+    font-weight: 700 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    transition: all 0.2s ease !important;
+    text-decoration: none !important;
+}
+
+.oz-table .oz-btn-sm:hover {
+    transform: translateY(-2px);
+}
+
+.oz-table .oz-btn-view {
+    background: rgba(16, 185, 129, 0.08) !important;
+    color: #059669 !important;
+    border: 1.5px solid rgba(16, 185, 129, 0.25) !important;
+}
+
+.oz-table .oz-btn-view:hover {
+    background: #10b981 !important;
+    color: #ffffff !important;
+    border-color: #10b981 !important;
+}
+
+.oz-table .oz-btn-edit {
+    background: rgba(2, 132, 199, 0.08) !important;
+    color: #0284c7 !important;
+    border: 1.5px solid rgba(2, 132, 199, 0.25) !important;
+}
+
+.oz-table .oz-btn-edit:hover {
+    background: #0284c7 !important;
+    color: #ffffff !important;
+    border-color: #0284c7 !important;
+}
+
+.oz-table .oz-btn-delete {
+    background: rgba(244, 63, 94, 0.08) !important;
+    color: #f43f5e !important;
+    border: 1.5px solid rgba(244, 63, 94, 0.25) !important;
+}
+
+.oz-table .oz-btn-delete:hover {
+    background: #f43f5e !important;
+    color: #ffffff !important;
+    border-color: #f43f5e !important;
+}
+
+.oz-pagination-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 28px;
+    background: #f8fafc;
+    border-top: 1px solid #e2e8f0;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.oz-page-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 34px;
+    height: 34px;
+    padding: 0 8px;
+    border-radius: 8px;
+    font-size: 12.5px;
+    font-weight: 700;
+    text-decoration: none !important;
+    background: #ffffff;
+    color: #475569;
+    border: 1.5px solid #cbd5e1;
+}
+
+.oz-page-num.active {
+    background: #0284c7 !important;
+    color: #ffffff !important;
+    border-color: #0284c7 !important;
+}
+
+.oz-page-num.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+    background: #f1f5f9;
+}
+
+.oz-modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(8px);
+    z-index: 99999;
+    align-items: center;
+    justify-content: center;
+}
+
+.oz-modal-card {
+    background: #ffffff;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 20px;
+    width: 500px;
+    max-width: 95vw;
+    padding: 30px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+}
+
+/**
+ * Ozone Skypool OS - Turnstile Gate & Scanner Console Stylesheet
+ * File: assets/css/scanner-console.css
+ */
+
+/* ==========================================================================
+   1. Console Grid Layout & Panel Surfaces
+   ========================================================================== */
+.oz-scanner-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(400px, 0.95fr);
+    gap: 26px;
+    align-items: start;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+@media (max-width: 1200px) {
+    .oz-scanner-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+.oz-panel-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.oz-panel-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 28px;
+    border-bottom: 1px solid #f1f5f9;
+    background: linear-gradient(to bottom, #fafbfd, #f8fafc);
+}
+
+.oz-panel-title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #0f172a;
+}
+
+.oz-console-body {
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    box-sizing: border-box;
+}
+
+/* ==========================================================================
+   2. Electronic Turnstile Relay Barrier
+   ========================================================================== */
+.oz-barrier-relay-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #f8fafc;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 18px;
+    padding: 16px 20px;
+    transition: all 0.3s ease;
+}
+
+.oz-relay-status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11.5px;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 8px 18px;
+    border-radius: 9999px;
+    transition: all 0.25s ease;
+}
+
+.oz-relay-status-pill.closed {
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.oz-relay-status-pill.open {
+    background: rgba(16, 185, 129, 0.12);
+    color: #10b981;
+    border: 1px solid rgba(16, 185, 129, 0.4);
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.35);
+}
+
+/* ==========================================================================
+   3. Optical Viewfinder HUD & Laser Reticle
+   ========================================================================== */
+.oz-scanner-viewport {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    height: 270px;
+    margin: 0 auto;
+    border-radius: 20px;
+    background: #020617;
+    border: 2px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.85);
+}
+
+.oz-scanner-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+}
+
+.oz-hud-reticle {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    border-color: #0284c7;
+    border-style: solid;
+    z-index: 6;
+    pointer-events: none;
+}
+
+.oz-hud-reticle.top-left {
+    top: 16px;
+    left: 16px;
+    border-width: 3px 0 0 3px;
+    border-top-left-radius: 8px;
+}
+
+.oz-hud-reticle.top-right {
+    top: 16px;
+    right: 16px;
+    border-width: 3px 3px 0 0;
+    border-top-right-radius: 8px;
+}
+
+.oz-hud-reticle.bottom-left {
+    bottom: 16px;
+    left: 16px;
+    border-width: 0 0 3px 3px;
+    border-bottom-left-radius: 8px;
+}
+
+.oz-hud-reticle.bottom-right {
+    bottom: 16px;
+    right: 16px;
+    border-width: 0 3px 3px 0;
+    border-bottom-right-radius: 8px;
+}
+
+.oz-laser-beam {
+    position: absolute;
+    left: 8%;
+    right: 8%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #0284c7, #38bdf8, transparent);
+    box-shadow: 0 0 16px #0284c7, 0 0 6px #ffffff;
+    animation: ozLaserSweep 2.2s ease-in-out infinite alternate;
+    z-index: 5;
+    pointer-events: none;
+}
+
+@keyframes ozLaserSweep {
+    0% {
+        top: 14%;
+        opacity: 0.2;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        top: 86%;
+        opacity: 0.2;
+    }
+}
+
+/* ==========================================================================
+   4. Split Token Input Controls
+   ========================================================================== */
+.oz-field-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.oz-field-label {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #475569;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.oz-split-token-group {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background: #ffffff;
+    border: 2px solid #cbd5e1;
+    border-radius: 14px;
+    overflow: hidden;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    box-sizing: border-box;
+}
+
+.oz-split-token-group:focus-within {
+    border-color: #0284c7;
+    box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.15);
+}
+
+.oz-token-prefix-addon {
+    background: #f1f5f9;
+    color: #0284c7;
+    font-weight: 800;
+    font-size: 15px;
+    padding: 0 14px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    border-right: 1.5px solid #cbd5e1;
+    user-select: none;
+    letter-spacing: 0.8px;
+    white-space: nowrap;
+}
+
+#wpcontent .oz-scanner-layout input[type="text"].oz-token-number-input {
+    flex: 1 !important;
+    display: block !important;
+    width: 100% !important;
+    background: #ffffff !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 0 16px !important;
+    font-size: 20px !important;
+    font-weight: 800 !important;
+    letter-spacing: 2px !important;
+    text-transform: uppercase !important;
+    text-align: left !important;
+    color: #0f172a !important;
+    height: 52px !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+.oz-scanner-status-bar {
+    padding: 16px 20px;
+    border-radius: 14px;
+    font-weight: 700;
+    font-size: 13.5px;
+    text-align: center;
+    background: #f8fafc;
+    border: 1.5px solid #e2e8f0;
+    color: #475569;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.25s ease;
+}
+
+/* ==========================================================================
+   5. Telemetry Result Display & Session Feed
+   ========================================================================== */
+.oz-telemetry-result-card {
+    background: #ffffff;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 20px;
+    padding: 22px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
+.oz-telemetry-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 14px 0;
+    font-size: 12px;
+}
+
+.oz-telemetry-item {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 8px 12px;
+}
+
+.oz-telemetry-item span {
+    display: block;
+    font-size: 10px;
+    font-weight: 700;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.oz-telemetry-item strong {
+    font-size: 12.5px;
+    color: #0f172a;
+}
+
+.oz-telemetry-item-wide {
+    grid-column: span 2;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 10px 12px;
+}
+
+.oz-telemetry-item-wide span {
+    display: block;
+    font-size: 10px;
+    font-weight: 700;
+    color: #64748b;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+}
+
+.oz-feed-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    margin-bottom: 8px;
+    transition: all 0.15s ease;
+}
+
+.oz-feed-item:hover {
+    background: #f1f5f9;
+    transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   6. Custom Buttons
+   ========================================================================== */
+#wpcontent .oz-scanner-layout .oz-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    border-radius: 12px !important;
+    transition: all 0.2s ease !important;
+}
+
+#wpcontent .oz-scanner-layout .oz-btn-primary.oz-btn-lg {
+    height: 52px !important;
+    font-size: 15px !important;
+    font-weight: 800 !important;
+    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(2, 132, 199, 0.8) !important;
+    box-shadow: 0 4px 16px rgba(2, 132, 199, 0.35) !important;
+}
+
+#wpcontent .oz-scanner-layout .oz-btn-primary.oz-btn-lg:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 22px rgba(2, 132, 199, 0.45) !important;
+}
+
+#wpcontent .oz-scanner-layout .oz-btn-secondary {
+    height: 44px !important;
+    padding: 0 16px !important;
+    font-size: 13px !important;
+    background: #ffffff !important;
+    color: #475569 !important;
+    border: 1.5px solid #cbd5e1 !important;
+}
+
+#wpcontent .oz-scanner-layout .oz-btn-secondary:hover {
+    background: #f8fafc !important;
+    border-color: #0284c7 !important;
+    color: #0284c7 !important;
+}
+
+/**
+ * Ozone Skypool OS - Financial Reports & Audit Ledger Stylesheet
+ * File: assets/css/reports.css
+ */
+
+.ifs-pms-report-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* ==========================================================================
+   1. Top Filter Bar & Controls
+   ========================================================================== */
+.ifs-pms-top-bar {
+    background: #ffffff;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    border-radius: 24px;
+    padding: 24px 32px;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 18px;
+    box-sizing: border-box;
+}
+
+.ifs-pms-tag-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #0284c7;
+    background: rgba(2, 132, 199, 0.08);
+    padding: 4px 10px;
+    border-radius: 20px;
+    margin-bottom: 6px;
+}
+
+.ifs-pms-bar-title {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 800;
+    color: #0f172a;
+}
+
+.ifs-pms-bar-controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.ifs-pms-filter-form {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin: 0;
+}
+
+.ifs-pms-date-picker-pill {
+    display: flex;
+    align-items: center;
+    background: #f8fafc;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 12px;
+    padding: 4px 12px;
+    gap: 8px;
+}
+
+.ifs-pms-date-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #64748b;
+    text-transform: uppercase;
+}
+
+.ifs-pms-date-picker-pill input[type="date"] {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    color: #0f172a !important;
+    padding: 4px 0 !important;
+    height: auto !important;
+    outline: none !important;
+}
+
+.ifs-pms-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 42px;
+    padding: 0 18px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    box-sizing: border-box;
+}
+
+.ifs-pms-btn-blue {
+    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+    color: #ffffff;
+    border: 1px solid rgba(2, 132, 199, 0.8);
+    box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3);
+}
+
+.ifs-pms-btn-blue:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(2, 132, 199, 0.45);
+}
+
+.ifs-pms-btn-white {
+    background: #ffffff;
+    border: 1.5px solid #cbd5e1;
+    color: #475569;
+}
+
+.ifs-pms-btn-white:hover {
+    background: #f8fafc;
+    border-color: #0284c7;
+    color: #0284c7;
+}
+
+/* ==========================================================================
+   2. Summary Stat Cards Grid
+   ========================================================================== */
+.ifs-pms-card-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+@media (max-width: 1100px) {
+    .ifs-pms-card-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .ifs-pms-card-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.ifs-pms-stat-card {
+    background: #ffffff;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    border-radius: 20px;
+    padding: 22px 24px;
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.03);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.ifs-pms-stat-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ifs-pms-stat-name {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #64748b;
+}
+
+.ifs-pms-stat-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+}
+
+.ifs-pms-stat-icon-green {
+    background: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+}
+
+.ifs-pms-stat-icon-red {
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+}
+
+.ifs-pms-stat-icon-blue {
+    background: rgba(2, 132, 199, 0.1);
+    color: #0284c7;
+}
+
+.ifs-pms-stat-icon-purple {
+    background: rgba(168, 85, 247, 0.1);
+    color: #a855f7;
+}
+
+.ifs-pms-stat-number {
+    font-size: 26px;
+    font-weight: 800;
+    line-height: 1.1;
+}
+
+.ifs-pms-stat-number-green {
+    color: #10b981;
+}
+
+.ifs-pms-stat-number-red {
+    color: #ef4444;
+}
+
+.ifs-pms-stat-number-blue {
+    color: #0f172a;
+}
+
+.ifs-pms-stat-number-purple {
+    color: #a855f7;
+}
+
+.ifs-pms-stat-bottom {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11.5px;
+    color: #64748b;
+    border-top: 1px dashed #e2e8f0;
+    padding-top: 10px;
+}
+
+/* ==========================================================================
+   3. Sub Navigation Tabs (Income vs Expense)
+   ========================================================================== */
+.ifs-pms-sub-tabs {
+    display: flex;
+    width: 480px;
+    max-width: 100%;
+    gap: 8px;
+    background: #e2e8f0;
+    padding: 6px;
+    border-radius: 16px;
+    box-sizing: border-box;
+}
+
+.ifs-pms-sub-tab-btn {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    background: transparent;
+    color: #475569;
+    border: none !important;
+    outline: none !important;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    white-space: nowrap;
+}
+
+.ifs-pms-sub-tab-btn.active {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+.ifs-pms-tab-content {
+    display: none;
+}
+
+.ifs-pms-tab-content.active {
+    display: block;
+    animation: ifsFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes ifsFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==========================================================================
+   4. Table & Filter Containers
+   ========================================================================== */
+.ifs-pms-table-box {
+    background: #ffffff;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+}
+
+.ifs-pms-table-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 28px;
+    border-bottom: 1px solid #f1f5f9;
+    background: linear-gradient(to bottom, #fafbfd, #f8fafc);
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.ifs-pms-table-title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 800;
+    color: #0f172a;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ifs-pms-table-filter-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ifs-pms-table-filter-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: #64748b;
+}
+
+.ifs-pms-table-filter-group select {
+    height: 38px !important;
+    border-radius: 10px !important;
+    border: 1.5px solid #cbd5e1 !important;
+    padding: 0 12px !important;
+    font-weight: 700 !important;
+    font-size: 12.5px !important;
+    color: #0f172a !important;
+    background: #ffffff !important;
+}
+
+.ifs-pms-table-responsive {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.ifs-pms-data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+    text-align: left;
+}
+
+.ifs-pms-data-table th {
+    background: #f8fafc;
+    color: #64748b;
+    font-weight: 700;
+    font-size: 11.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 16px 24px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.ifs-pms-data-table td {
+    padding: 16px 24px;
+    border-bottom: 1px solid #f1f5f9;
+    color: #0f172a;
+    vertical-align: middle;
+}
+
+.ifs-pms-data-table tr:hover td {
+    background: #f8fafc;
+}
+
+/* ==========================================================================
+   5. Semantic Cells, Badges & Typography Helpers
+   ========================================================================== */
+.ifs-pms-code-cell {
+    font-weight: 800;
+}
+
+.ifs-pms-code-ticket {
+    color: #0284c7;
+}
+
+.ifs-pms-code-member {
+    color: #8b5cf6;
+}
+
+.ifs-pms-patron-cell {
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.ifs-pms-patron-sub {
+    font-size: 11px;
+    color: #64748b;
+    margin-top: 2px;
+}
+
+.ifs-pms-room-tag {
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 700;
+    color: #0284c7;
+    margin-left: 6px;
+}
+
+.ifs-pms-badge-ticket {
+    background: rgba(2, 132, 199, 0.08);
+    color: #0284c7;
+    border: 1px solid rgba(2, 132, 199, 0.2);
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 11.5px;
+    font-weight: 700;
+}
+
+.ifs-pms-badge-member {
+    background: rgba(139, 92, 246, 0.08);
+    color: #8b5cf6;
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 11.5px;
+    font-weight: 700;
+}
+
+.ifs-pms-badge-expense {
+    background: rgba(239, 68, 68, 0.08);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 11.5px;
+    font-weight: 700;
+}
+
+.ifs-pms-amount-green {
+    color: #10b981;
+    font-weight: 800;
+    text-align: right;
+}
+
+.ifs-pms-amount-red {
+    color: #ef4444;
+    font-weight: 800;
+    text-align: right;
+}
+
+.ifs-pms-font-semibold {
+    font-weight: 600;
+}
+
+.ifs-pms-text-muted {
+    color: #64748b;
+}
+
+.ifs-pms-text-date {
+    font-size: 12px;
+    color: #475569;
+}
+
+.ifs-pms-text-green {
+    color: #10b981;
+}
+
+.ifs-pms-text-red {
+    color: #ef4444;
+}
+
+.ifs-pms-empty-state {
+    text-align: center;
+    padding: 48px;
+    color: #94a3b8;
+}
+
+.ifs-pms-empty-icon {
+    font-size: 32px;
+    margin-bottom: 10px;
+    opacity: 0.35;
+    display: block;
+}
+
+.ifs-pms-table-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 28px;
+    background: #f8fafc;
+    border-top: 1px solid #e2e8f0;
+}
+
+.ifs-pms-footer-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: #64748b;
+}
+
+.ifs-pms-footer-value-green {
+    font-size: 17px;
+    font-weight: 800;
+    color: #10b981;
+}
+
+.ifs-pms-footer-value-red {
+    font-size: 17px;
+    font-weight: 800;
+    color: #ef4444;
+}
+
+/**
+ * Ozone Skypool OS - Operations Dashboard Stylesheet
+ * File: assets/css/dashboard.css
+ */
+
+.ifs-pms-dash-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* ==========================================================================
+   1. Live Telemetry & Station Header
+   ========================================================================== */
+.ifs-pms-telemetry-header {
+    background: #ffffff;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    border-radius: 20px;
+    padding: 20px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+    flex-wrap: wrap;
+    gap: 16px;
+    box-sizing: border-box;
+}
+
+.ifs-pms-clock-wrap {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.ifs-pms-clock-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: rgba(2, 132, 199, 0.08);
+    color: #0284c7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+}
+
+.ifs-pms-clock-digits {
+    font-size: 24px;
+    font-weight: 800;
+    color: #0f172a;
+    font-family: var(--ifs-font-mono, monospace);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+.ifs-pms-clock-date {
+    font-size: 12px;
+    font-weight: 600;
+    color: #64748b;
+    margin-top: 3px;
+}
+
+.ifs-pms-closing-countdown {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #f59e0b;
+    background: rgba(245, 158, 11, 0.08);
+    padding: 2px 8px;
+    border-radius: 6px;
+    margin-top: 4px;
+}
+
+.ifs-pms-operator-meta-block {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.ifs-pms-operator-meta {
+    text-align: right;
+}
+
+.ifs-pms-operator-name {
+    font-size: 14px;
+    font-weight: 800;
+    color: #0f172a;
+}
+
+.ifs-pms-operator-role {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: #64748b;
+}
+
+/* ==========================================================================
+   2. Rooftop Skypool Occupancy Gauge
+   ========================================================================== */
+.ifs-pms-gauge-card {
+    background: #ffffff;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    border-radius: 20px;
+    padding: 24px 28px;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+    display: grid;
+    grid-template-columns: 1.2fr 1.5fr auto;
+    gap: 28px;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+@media (max-width: 992px) {
+    .ifs-pms-gauge-card {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+}
+
+.ifs-pms-gauge-icon-box {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: rgba(2, 132, 199, 0.08);
+    color: #0284c7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+}
+
+.ifs-pms-gauge-title {
+    font-size: 11.5px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #64748b;
+    margin-bottom: 2px;
+}
+
+.ifs-pms-gauge-numbers {
+    font-size: 26px;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.1;
+}
+
+.ifs-pms-gauge-subtitle {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #64748b;
+}
+
+.ifs-pms-gauge-progress-wrap {
+    width: 100%;
+}
+
+.ifs-pms-gauge-progress-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.ifs-pms-gauge-progress-label {
+    color: #64748b;
+}
+
+.ifs-pms-gauge-progress-val {
+    color: #0f172a;
+}
+
+.ifs-pms-gauge-progress-track {
+    width: 100%;
+    height: 10px;
+    background: #f1f5f9;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.ifs-pms-gauge-progress-bar {
+    height: 100%;
+    border-radius: 6px;
+    transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ==========================================================================
+   3. Quick Operational Action Tiles
+   ========================================================================== */
+.ifs-pms-action-deck {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+@media (max-width: 1100px) {
+    .ifs-pms-action-deck {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .ifs-pms-action-deck {
+        grid-template-columns: 1fr;
+    }
+}
+
+.ifs-pms-action-card {
+    background: #ffffff;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    border-radius: 18px;
+    padding: 18px 20px;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.02);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-decoration: none !important;
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.ifs-pms-action-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
+    border-color: #cbd5e1;
+}
+
+.ifs-pms-action-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.ifs-pms-action-icon-blue {
+    background: rgba(2, 132, 199, 0.1);
+    color: #0284c7;
+}
+
+.ifs-pms-action-icon-green {
+    background: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+}
+
+.ifs-pms-action-icon-purple {
+    background: rgba(192, 132, 252, 0.1);
+    color: #c084fc;
+}
+
+.ifs-pms-action-icon-red {
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+}
+
+.ifs-pms-action-title {
+    font-size: 13.5px;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.2;
+}
+
+.ifs-pms-action-sub {
+    font-size: 11px;
+    color: #64748b;
+    margin-top: 3px;
+}
+
+/* ==========================================================================
+   4. Executive KPI Summary Quad
+   ========================================================================== */
+.ifs-pms-kpi-quad {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+@media (max-width: 1100px) {
+    .ifs-pms-kpi-quad {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .ifs-pms-kpi-quad {
+        grid-template-columns: 1fr;
+    }
+}
+
+.ifs-pms-kpi-brick {
+    background: #ffffff;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    border-radius: 18px;
+    padding: 20px 22px;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.02);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.ifs-pms-kpi-meta-tag {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #64748b;
+}
+
+.ifs-pms-kpi-val {
+    font-size: 26px;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+.ifs-pms-kpi-foot {
+    font-size: 11.5px;
+    color: #64748b;
+    border-top: 1px dashed #e2e8f0;
+    padding-top: 8px;
+    margin-top: 4px;
+}
+
+/* ==========================================================================
+   5. Live Activity Stream & Shift Ledger Split
+   ========================================================================== */
+.ifs-pms-activity-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 22px;
+}
+
+@media (max-width: 992px) {
+    .ifs-pms-activity-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.ifs-pms-panel-card {
+    background: #ffffff;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+.ifs-pms-panel-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.ifs-pms-panel-header-title {
+    margin: 0;
+    font-size: 15.5px;
+    font-weight: 800;
+    color: #0f172a;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ifs-pms-ledger-link {
+    color: #0284c7;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.ifs-pms-feed-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 14px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    margin-bottom: 10px;
+}
+
+.ifs-pms-feed-guest {
+    font-size: 13px;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.ifs-pms-feed-meta {
+    font-size: 11px;
+    color: #64748b;
+    margin-top: 2px;
+}
+
+.ifs-pms-feed-date {
+    font-size: 11.5px;
+    color: #64748b;
+    margin-top: 5px;
+}
+
+.ifs-pms-empty-state-wrap {
+    text-align: center;
+    color: #64748b;
+    padding: 56px 20px;
+}
+
+.ifs-pms-empty-icon {
+    font-size: 32px;
+    margin-bottom: 12px;
+    opacity: 0.3;
+    display: block;
+}
+
+.ifs-pms-finance-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 0;
+    border-bottom: 1px dashed #e2e8f0;
+    font-size: 13.5px;
+    font-weight: 700;
+}
+
+.ifs-pms-finance-item-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #0f172a;
+}
+
+.ifs-pms-finance-total {
+    border-bottom: none;
+    border-top: 2px solid #cbd5e1;
+    margin-top: 8px;
+    padding-top: 18px;
+}
+
+/* ==========================================================================
+   6. Semantic Status Badges & Colors
+   ========================================================================== */
+.ifs-pms-status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.ifs-pms-status-green {
+    background: rgba(16, 185, 129, 0.12);
+    color: #059669;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+.wp-login-logo {
+	display: none !important;
+}
+.ifs-pms-status-amber {
+    background: rgba(245, 158, 11, 0.12);
+    color: #d97706;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.ifs-pms-status-red {
+    background: rgba(239, 68, 68, 0.12);
+    color: #dc2626;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.ifs-pms-status-pill-sm {
+    padding: 4px 10px;
+    font-size: 11px;
+}
+
+.ifs-pms-text-green {
+    color: #10b981;
+}
+
+.ifs-pms-text-red {
+    color: #ef4444;
+}
+
+.ifs-pms-text-blue {
+    color: #0284c7;
+}
+
+.ifs-pms-text-purple {
+    color: #c084fc;
+}
+
+.ifs-pms-text-dark {
+    color: #0f172a;
+}
+
+/**
+ * Terminal Configuration & Master Settings Stylesheet
+ * Prefix: ifs-pms-
+ */
+
+/* Wrapper & Layout */
+.ifs-pms-settings-wrapper {
+    max-width: 1100px;
+    margin: 20px 0;
+    font-family: inherit;
+    color: #1e293b;
+}
+
+.ifs-pms-mono {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* Tab Navigation */
+.ifs-pms-subnav-bar {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 8px;
+}
+
+.ifs-pms-subnav-btn {
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    font-weight: 600;
+    color: #64748b;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+}
+
+.ifs-pms-subnav-btn:hover {
+    color: #0f172a;
+    background-color: #f1f5f9;
+}
+
+.ifs-pms-subnav-btn.active {
+    color: #2563eb;
+    background-color: #eff6ff;
+}
+
+.ifs-pms-tab-pane {
+    display: none;
+}
+
+.ifs-pms-tab-pane.active {
+    display: block;
+}
+
+/* Card & Panels */
+.ifs-pms-panel-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    margin-bottom: 24px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.ifs-pms-panel-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.ifs-pms-panel-title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #0f172a;
+    display: flex;
+    align-items: center;
+}
+
+.ifs-pms-form-stack {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* Grids & Field Layouts */
+.ifs-pms-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.ifs-pms-grid-2-compact {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.ifs-pms-field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.ifs-pms-field-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #334155;
+}
+
+.ifs-pms-field-label-compact {
+    margin-bottom: 0;
+}
+
+.ifs-pms-form-stack input[type="text"],
+.ifs-pms-form-stack input[type="number"],
+.ifs-pms-form-stack input[type="url"],
+.ifs-pms-form-stack input[type="time"],
+.ifs-pms-form-stack select,
+.ifs-pms-form-stack textarea {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #1e293b;
+    box-sizing: border-box;
+}
+
+.ifs-pms-select-heavy {
+    font-weight: 500;
+}
+
+.ifs-pms-separator {
+    border: none;
+    border-top: 1px solid #e2e8f0;
+    margin: 6px 0;
+}
+
+/* Icon Wrappers (Replaced Inline Styles) */
+.ifs-pms-icon-nav {
+    display: inline-flex;
+    vertical-align: middle;
+    margin-right: 6px;
+}
+
+.ifs-pms-icon-title {
+    display: inline-flex;
+    vertical-align: middle;
+    margin-right: 6px;
+}
+
+.ifs-pms-icon-btn {
+    display: inline-flex;
+    vertical-align: middle;
+    margin-right: 4px;
+}
+
+.ifs-pms-icon-action {
+    display: inline-flex;
+    vertical-align: middle;
+}
+
+.ifs-pms-icon-btn-lg {
+    display: inline-flex;
+    vertical-align: middle;
+    margin-right: 6px;
+}
+
+/* Buttons */
+.ifs-pms-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+
+.ifs-pms-btn-primary {
+    background-color: #2563eb;
+    color: #ffffff;
+}
+
+.ifs-pms-btn-primary:hover {
+    background-color: #1d4ed8;
+}
+
+.ifs-pms-btn-secondary {
+    background-color: #f8fafc;
+    border-color: #cbd5e1;
+    color: #334155;
+}
+
+.ifs-pms-btn-secondary:hover {
+    background-color: #f1f5f9;
+}
+
+.ifs-pms-btn-danger {
+    background-color: #fee2e2;
+    color: #dc2626;
+    border-color: #fca5a5;
+}
+
+.ifs-pms-btn-danger:hover {
+    background-color: #fecaca;
+}
+
+.ifs-pms-btn-sm {
+    padding: 4px 8px;
+    font-size: 12px;
+}
+
+.ifs-pms-btn-lg {
+    padding: 10px 18px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.ifs-pms-btn-submit-block {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* Repeater Tables */
+.ifs-pms-repeater-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 4px;
+}
+
+.ifs-pms-repeater-table th {
+    text-align: left;
+    padding: 10px 12px;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #64748b;
+    background: #f8fafc;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.ifs-pms-repeater-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #f1f5f9;
+    vertical-align: middle;
+}
+
+.ifs-pms-td-action {
+    text-align: center;
+    width: 60px;
+}
+
+.ifs-pms-empty-table-notice {
+    text-align: center;
+    padding: 24px 12px;
+    color: #94a3b8;
+    font-style: italic;
+}
+
+/* Weekly Operating Hours Schedule */
+.ifs-pms-schedule-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.ifs-pms-schedule-row {
+    display: grid;
+    grid-template-columns: 140px 120px 1fr 1fr;
+    gap: 16px;
+    align-items: center;
+    padding: 8px 12px;
+    background: #f8fafc;
+    border-radius: 6px;
+}
+
+.ifs-pms-schedule-day-title {
+    font-size: 13px;
+    color: #1e293b;
+}
+
+.ifs-pms-schedule-time-block {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ifs-pms-schedule-time-label {
+    font-size: 12px;
+    color: #64748b;
+}
+
+.ifs-pms-time-input {
+    width: 120px;
+}
+
+/* Toggle Switches */
+.ifs-pms-switch-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.ifs-pms-switch-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+}
+
+.ifs-pms-switch-card-tight {
+    padding: 10px 14px;
+}
+
+.ifs-pms-switch-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.ifs-pms-switch-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.ifs-pms-switch-title-sm {
+    font-size: 13px;
+    font-weight: 500;
+    color: #334155;
+}
+
+.ifs-pms-switch-desc {
+    font-size: 12px;
+    color: #64748b;
+}
+
+.ifs-pms-check-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 10px;
+    margin-top: 4px;
+}
+
+.ifs-pms-switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+.ifs-pms-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.ifs-pms-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #cbd5e1;
+    transition: 0.3s;
+    border-radius: 24px;
+}
+
+.ifs-pms-slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.3s;
+    border-radius: 50%;
+}
+
+.ifs-pms-switch input:checked + .ifs-pms-slider {
+    background-color: #2563eb;
+}
+
+.ifs-pms-switch input:checked + .ifs-pms-slider:before {
+    transform: translateX(20px);
+}
+
+/* Gear Amenities Section */
+.ifs-pms-amenities-repeater-wrapper {
+    display: none;
+    margin-top: 14px;
+}
+
+.ifs-pms-amenities-repeater-wrapper.is-visible {
+    display: block;
+}
+
+.ifs-pms-amenities-box-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/* Logo Upload & Preview */
+.ifs-pms-logo-upload-group {
+    display: flex;
+    gap: 8px;
+}
+
+.ifs-pms-logo-preview-box {
+    margin-top: 8px;
+}
+
+.ifs-pms-logo-img {
+    max-height: 50px;
+    width: auto;
+    border-radius: 4px;
+    border: 1px solid #e2e8f0;
+    padding: 4px;
+    background: #ffffff;
+}

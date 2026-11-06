@@ -1,0 +1,411 @@
+/**
+ * View Partial: Client Paid Invoices & Official Payment Receipts Styles
+ * File: assets/css/receipts.css
+ * @version 1.0.0
+ */
+
+.vpdl-receipts-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    box-sizing: border-box;
+}
+
+.vpdl-receipts-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.vpdl-receipts-title {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--vpdl-text-main);
+    margin: 0 0 4px;
+}
+
+.vpdl-receipts-subtitle {
+    color: var(--vpdl-text-muted);
+    font-size: 13.5px;
+    margin: 0;
+}
+
+.vpdl-receipts-btn-export {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    font-weight: 700;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+.vpdl-receipts-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+}
+
+.vpdl-receipts-stat-card {
+    padding: 18px 20px;
+}
+
+.vpdl-receipts-stat-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--vpdl-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.vpdl-receipts-stat-val {
+    font-size: 24px;
+    font-weight: 800;
+    margin-top: 4px;
+    font-family: monospace;
+}
+
+.vpdl-stat-val-main { color: var(--vpdl-text-main); }
+.vpdl-stat-val-green { color: #10b981; }
+.vpdl-stat-val-accent { color: var(--vpdl-accent); }
+
+.vpdl-receipts-table-panel {
+    overflow: hidden;
+}
+
+.vpdl-receipts-toolbar {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--vpdl-border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.vpdl-receipts-search {
+    width: 100%;
+    max-width: 320px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    box-sizing: border-box;
+}
+
+.vpdl-receipts-count-display {
+    font-size: 12.5px;
+    color: var(--vpdl-text-muted);
+    font-weight: 600;
+}
+
+.vpdl-receipts-table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.vpdl-receipts-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    text-align: left;
+    min-width: 850px;
+}
+
+.vpdl-receipts-thead {
+    background: var(--vpdl-sidebar-hover-bg);
+    border-bottom: 1px solid var(--vpdl-border-color);
+}
+
+.vpdl-receipts-th {
+    padding: 12px 16px;
+    font-weight: 700;
+    color: var(--vpdl-text-muted);
+    font-size: 11.5px;
+    text-transform: uppercase;
+}
+
+.vpdl-receipts-th-right {
+    text-align: right;
+}
+
+.vpdl-receipts-row {
+    border-bottom: 1px solid var(--vpdl-border-color);
+    transition: background 0.15s ease;
+}
+
+.vpdl-receipts-row:hover {
+    background: rgba(2, 132, 199, 0.02);
+}
+
+.vpdl-receipts-td {
+    padding: 14px 16px;
+}
+
+.vpdl-receipts-td-right {
+    padding: 14px 16px;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.vpdl-receipts-num {
+    font-family: monospace;
+    font-weight: 800;
+    color: var(--vpdl-accent);
+}
+
+.vpdl-receipts-inv-ref {
+    font-family: monospace;
+    font-weight: 700;
+    color: var(--vpdl-text-main);
+}
+
+.vpdl-receipts-client-title {
+    font-weight: 700;
+    color: var(--vpdl-text-main);
+    font-size: 13.5px;
+    display: block;
+}
+
+.vpdl-receipts-client-sub {
+    font-size: 11px;
+    color: var(--vpdl-text-muted);
+    margin-top: 2px;
+    display: block;
+}
+
+.vpdl-receipts-amt {
+    font-family: monospace;
+    font-weight: 800;
+    color: #10b981;
+    font-size: 13.5px;
+}
+
+.vpdl-receipts-method-tag {
+    background: rgba(148, 163, 184, 0.15);
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--vpdl-text-main);
+    display: inline-block;
+}
+
+.vpdl-receipts-date {
+    color: var(--vpdl-text-muted);
+    font-size: 12.5px;
+}
+
+.vpdl-receipts-empty {
+    padding: 40px 18px;
+    text-align: center;
+    color: var(--vpdl-text-muted);
+}
+
+.vpdl-receipts-action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: 600;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+    text-decoration: none;
+    border: 1px solid var(--vpdl-border-color);
+    background: var(--vpdl-card-bg);
+    color: var(--vpdl-text-main);
+    transition: all 0.15s ease;
+}
+
+.vpdl-receipts-action-btn:hover {
+    border-color: var(--vpdl-accent);
+    color: var(--vpdl-accent);
+}
+
+/* Modal Window */
+#vpdlReceiptModal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(4px);
+    z-index: 99999;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+.vpdl-modal-receipt-card {
+    background: #ffffff;
+    color: #0f172a;
+    width: 100%;
+    max-width: 680px;
+    max-height: 92vh;
+    overflow-y: auto;
+    border-radius: 14px;
+    padding: 36px;
+    box-sizing: border-box;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.vpdl-modal-receipt-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 2px solid #0f172a;
+    padding-bottom: 16px;
+    margin-bottom: 20px;
+}
+
+.vpdl-modal-bizname {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 900;
+    color: #0284c7;
+    letter-spacing: -0.3px;
+}
+
+.vpdl-modal-bizmeta {
+    font-size: 11.5px;
+    color: #475569;
+    margin-top: 3px;
+}
+
+.vpdl-modal-doc-title {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 900;
+    color: #0f172a;
+    text-align: right;
+}
+
+.vpdl-modal-doc-ref {
+    font-family: monospace;
+    font-size: 14px;
+    font-weight: 800;
+    color: #0284c7;
+    text-align: right;
+    margin-top: 3px;
+}
+
+.vpdl-modal-badge-settled {
+    background: #dcfce7;
+    color: #15803d;
+    border: 1px solid #bbf7d0;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 10.5px;
+    font-weight: 800;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-top: 4px;
+}
+
+.vpdl-modal-details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 20px;
+    font-size: 12.5px;
+    line-height: 1.6;
+}
+
+.vpdl-modal-details-title {
+    display: block;
+    font-size: 11px;
+    font-weight: 800;
+    color: #64748b;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.vpdl-modal-receipt-summary {
+    background: #f8fafc;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 20px;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.vpdl-modal-summary-line {
+    display: flex;
+    justify-content: space-between;
+    color: #475569;
+}
+
+.vpdl-modal-summary-total {
+    display: flex;
+    justify-content: space-between;
+    border-top: 2px solid #0f172a;
+    padding-top: 8px;
+    margin-top: 6px;
+    font-size: 16px;
+    font-weight: 900;
+    color: #10b981;
+}
+
+.vpdl-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.vpdl-btn-modal-close {
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+    background: #f8fafc;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.vpdl-btn-modal-print {
+    padding: 8px 20px;
+    border-radius: 6px;
+    border: none;
+    background: #0284c7;
+    color: #ffffff;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+@media print {
+    body * { visibility: hidden !important; }
+    #vpdlReceiptPrintableArea, #vpdlReceiptPrintableArea * { visibility: visible !important; }
+    #vpdlReceiptPrintableArea {
+        position: absolute !important;
+        left: 0 !important;
+        top: 0 !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 15mm !important;
+        background: #ffffff !important;
+        color: #000000 !important;
+    }
+    .no-print, #vpdlReceiptModal button { display: none !important; }
+    @page { size: A4 portrait; margin: 10mm; }
+}
+
+@media (max-width: 768px) {
+    .vpdl-modal-details-grid {
+        grid-template-columns: 1fr;
+    }
+}

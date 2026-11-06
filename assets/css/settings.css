@@ -1,0 +1,165 @@
+/**
+ * View: VPDL Master Configuration & Settings Console Styles
+ * File: assets/css/settings.css
+ * @version 1.0.0
+ */
+
+.vpdl-settings-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    box-sizing: border-box;
+}
+
+.vpdl-settings-card {
+    background: var(--vpdl-card-bg);
+    border: 1px solid var(--vpdl-border-color);
+    border-radius: 12px;
+    box-sizing: border-box;
+    box-shadow: var(--vpdl-shadow-sm);
+}
+
+.vpdl-settings-header {
+    padding: 20px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.vpdl-settings-header-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.vpdl-settings-header-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(2, 132, 199, 0.15) 0%, rgba(2, 132, 199, 0.05) 100%);
+    color: var(--vpdl-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(2, 132, 199, 0.2);
+    flex-shrink: 0;
+}
+
+.vpdl-settings-title {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--vpdl-text-main);
+    letter-spacing: -0.4px;
+}
+
+.vpdl-settings-subtitle {
+    font-size: 12.5px;
+    color: var(--vpdl-text-muted);
+    margin-top: 3px;
+}
+
+.vpdl-tab-nav {
+    display: flex;
+    gap: 8px;
+    border-bottom: 1.5px solid var(--vpdl-border-color);
+    padding-bottom: 6px;
+    flex-wrap: wrap;
+}
+
+.vpdl-tab-btn {
+    padding: 11px 20px;
+    border-radius: 8px 8px 0 0;
+    font-size: 13.5px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.15s ease;
+    background: transparent;
+    color: var(--vpdl-text-muted);
+}
+
+.vpdl-tab-btn.is-active {
+    background: var(--vpdl-accent);
+    color: #ffffff;
+}
+
+.vpdl-tab-pane {
+    display: none;
+}
+
+.vpdl-tab-pane.is-active {
+    display: block;
+}
+
+.vpdl-form-group {
+    margin-bottom: 18px;
+}
+
+.vpdl-form-group label {
+    display: block;
+    font-size: 12.5px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--vpdl-text-main);
+}
+
+.vpdl-form-input,
+.vpdl-form-textarea {
+    width: 100%;
+    padding: 11px 14px;
+    border-radius: 8px;
+    background: var(--vpdl-input-bg);
+    border: 1px solid var(--vpdl-input-border);
+    color: var(--vpdl-text-main);
+    box-sizing: border-box;
+}
+
+.vpdl-settings-grid-2 {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 18px;
+}
+
+.vpdl-settings-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.vpdl-settings-bank-grid {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 24px;
+    align-items: start;
+}
+
+.vpdl-alert {
+    padding: 12px 18px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-weight: 700;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.vpdl-alert-success {
+    background: #ecfdf5;
+    border: 1px solid #a7f3d0;
+    color: #065f46;
+}
+
+@media (max-width: 900px) {
+    .vpdl-settings-grid-2,
+    .vpdl-settings-grid-3,
+    .vpdl-settings-bank-grid {
+        grid-template-columns: 1fr;
+    }
+}
